@@ -1,42 +1,66 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './App.css';
 import Slider from "react-slick";
+import recommendations from './data/recommendations'
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-          <h1 className="App-title">Welcome to React</h1>
-          <Slider {...sliderSettings}>
-              <div>
-                  <h3>1</h3>
-              </div>
-              <div>
-                  <h3>2</h3>
-              </div>
-              <div>
-                  <h3>3</h3>
-              </div>
-              <div>
-                  <h3>4</h3>
-              </div>
-              <div>
-                  <h3>5</h3>
-              </div>
-              <div>
-                  <h3>6</h3>
-              </div>
-          </Slider>
-      </div>
-    );
-  }
+
+    render() {
+
+        const items = recommendations.hits
+            .filter((recommendationsWithOutImage) => {
+                return recommendationsWithOutImage.image
+            })
+            .map((recommendationWithImage) => {
+                return <div key={recommendationWithImage.product_id}>
+                    <img className='image' alt={recommendationWithImage.image.alt} src={recommendationWithImage.image.link}
+                         onClick={() => this.setState({isOpen: true})}/>
+                    <h3>{recommendationWithImage.product_name}</h3>
+                    <h5>{recommendationWithImage.price}.00</h5>
+                </div>
+            });
+
+        return (
+            <div className="App">
+                <h1 className="App-title">WE RECOMMEND</h1>
+                <Slider {...sliderSettings}>
+                    {items}
+                </Slider>
+            </div>
+        );
+    }
 }
 
 const sliderSettings = {
+    infinite: false,
     speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 3,
-    adaptiveHeight: true,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    initialSlide: 0,
+    responsive: [
+        {
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3
+            }
+        },
+        {
+            breakpoint: 600,
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                initialSlide: 2
+            }
+        },
+        {
+            breakpoint: 480,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+            }
+        }
+    ]
 };
 
 export default App;

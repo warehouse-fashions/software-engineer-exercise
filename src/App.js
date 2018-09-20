@@ -13,8 +13,8 @@ class App extends Component {
             })
             .map((recommendationWithImage) => {
                 return <div key={recommendationWithImage.product_id}>
-                    <img className='image' alt={recommendationWithImage.image.alt} src={recommendationWithImage.image.link}
-                         onClick={() => this.setState({isOpen: true})}/>
+                    <img className='item-image' alt={recommendationWithImage.image.alt}
+                         src={recommendationWithImage.image.link}/>
                     <h3>{recommendationWithImage.product_name}</h3>
                     <h5>{recommendationWithImage.price}.00</h5>
                 </div>

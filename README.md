@@ -3,6 +3,7 @@
 ## Built With
 * create-react-app - https://github.com/facebookincubator/create-react-app
 * ReactJS - https://facebook.github.io/react/
+* Slider - https://github.com/akiran/react-slick
 
 ## Before you begin
 

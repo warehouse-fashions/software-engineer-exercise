@@ -2,11 +2,7 @@
   text-align: center;
 }
 
-.App-title {
-  font-size: 1.5em;
-}
-
-.image{
+.item-image {
   height: 100%;
   width: 100%;
 }

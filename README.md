@@ -1,13 +1,27 @@
 # Warehouse Software Engineer Exercise
 
-In this exercise we would like you to build a web component similar to this [screenshot](recommendations-screenshot.png) using the recommendations [JSON](data/recommendations.json) provided. The component you build should display images, prices be able to link to a product modal/lightbox.
+## Built With
+* create-react-app - https://github.com/facebookincubator/create-react-app
+* ReactJS - https://facebook.github.io/react/
+* Slider - https://github.com/akiran/react-slick
 
-The product modal/lightbox should display information on the product clicked on similar to this [screenshot](product-modal-screenshot.png) making sure to include an image carousel, product name, price, colour swatch and size variations. All product information can be found in the following products [JSON](data/product.json) provided. Creativity is accepted but do not alter the JSONs provided.
+## Before you begin
 
-### Requirements
-* Responsive
-* Reusable code
+* Make sure that you have the following prerequisites installed:
+    * The [Node.js](https://nodejs.org/#download) runtime, including the [npm](https://www.npmjs.com/get-npm) or [yarn](https://yarnpkg.com/lang/en/docs/install/) package manager
+    
+### Installing and starting the app locally
 
-Please fork this repository and commit your changes for review.
+1. Install the app package into the local Node.js runtime environment:
 
-Amend this Readme in your forked repo and use your commits to outline the component you have created and the decisions that you have made, including any information required for how to run your component. When complete please raise a Pull Request back into master branch for review.
+    ```bash
+    yarn install or npm install
+    ```
+
+1. Start the app:
+
+    ```bash
+    yarn start or npm start
+    ```
+
+1. Point your browser to http://localhost:3000 to try out the app.

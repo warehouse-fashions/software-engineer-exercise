@@ -36,9 +36,11 @@ class App extends Component {
                 return <div key={recommendationWithImage.product_id}>
                     <img className='item-image' alt={recommendationWithImage.image.alt}
                          src={recommendationWithImage.image.link}
-                         onClick={() => this.openModal(recommendationWithImage.product_id)}/>
+                    />
+                    <div onClick={() => this.openModal(recommendationWithImage.product_id)}>
                     <h3>{recommendationWithImage.product_name}</h3>
                     <h5>{recommendationWithImage.price}.00</h5>
+                    </div>
                 </div>
             });
 

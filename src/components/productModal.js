@@ -10,6 +10,7 @@ export default class ProductModal extends Component {
                     isOpen={this.props.isOpen}
                     style={customStyles}
                 >
+                    <h4>{this.props.productId}</h4>
                     <button onClick={this.props.closeModal}>close</button>
                 </Modal>
             </div>

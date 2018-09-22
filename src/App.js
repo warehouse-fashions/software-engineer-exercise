@@ -15,9 +15,10 @@ class App extends Component {
         this.closeModal = this.closeModal.bind(this);
     }
 
-    openModal() {
+    openModal(productId) {
         this.setState({
-            modalIsOpen: true
+            modalIsOpen: true,
+            productId: productId
         });
     }
 
@@ -35,7 +36,7 @@ class App extends Component {
                 return <div key={recommendationWithImage.product_id}>
                     <img className='item-image' alt={recommendationWithImage.image.alt}
                          src={recommendationWithImage.image.link}
-                         onClick={() => this.openModal()}/>
+                         onClick={() => this.openModal(recommendationWithImage.product_id)}/>
                     <h3>{recommendationWithImage.product_name}</h3>
                     <h5>{recommendationWithImage.price}.00</h5>
                 </div>
@@ -49,6 +50,7 @@ class App extends Component {
                 </Slider>
                 {this.state.modalIsOpen && <ProductModal isOpen={this.state.modalIsOpen}
                                                          closeModal={this.closeModal}
+                                                         productId={this.state.productId}
                 />}
             </div>
         );

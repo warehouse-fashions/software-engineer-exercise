@@ -2,8 +2,28 @@ import React, {Component} from 'react';
 import './App.css';
 import Slider from "react-slick";
 import recommendations from './data/recommendations'
+import ProductModal from './components/productModal'
 
 class App extends Component {
+
+    constructor() {
+        super();
+        this.state = {
+            modalIsOpen: false
+        };
+        this.openModal = this.openModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
+    }
+
+    openModal() {
+        this.setState({
+            modalIsOpen: true
+        });
+    }
+
+    closeModal() {
+        this.setState({modalIsOpen: false});
+    }
 
     render() {
 
@@ -14,7 +34,8 @@ class App extends Component {
             .map((recommendationWithImage) => {
                 return <div key={recommendationWithImage.product_id}>
                     <img className='item-image' alt={recommendationWithImage.image.alt}
-                         src={recommendationWithImage.image.link}/>
+                         src={recommendationWithImage.image.link}
+                         onClick={() => this.openModal()}/>
                     <h3>{recommendationWithImage.product_name}</h3>
                     <h5>{recommendationWithImage.price}.00</h5>
                 </div>
@@ -26,6 +47,9 @@ class App extends Component {
                 <Slider {...sliderSettings}>
                     {items}
                 </Slider>
+                {this.state.modalIsOpen && <ProductModal isOpen={this.state.modalIsOpen}
+                                                         closeModal={this.closeModal}
+                />}
             </div>
         );
     }

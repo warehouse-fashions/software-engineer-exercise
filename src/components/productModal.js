@@ -37,6 +37,13 @@ export default class ProductModal extends Component {
                 >
                     <h3>{this.state.product.name}</h3>
                     <h4>£{this.state.product.price}.00</h4>
+                    {this.state.product &&
+                    <ul>
+                        {this.state.product.variants.map((variant) => {
+                                return <li key={variant.product_id} >Size: {variant.variation_values.size} - Colour: {variant.variation_values.color}</li>
+                            }
+                        )}
+                    </ul>}
                     <button onClick={this.props.closeModal}>close</button>
                 </Modal>
             </div>

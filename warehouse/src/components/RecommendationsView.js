@@ -12,20 +12,19 @@ const RecommendationsView = (props) => {
          "title": `${product.product_name}`
       }
     }
-    
+
     return (
-      <ul>
-        <li>{product.price}</li>
-        <li>{product.product_name}</li>
-        <li>{product.image.alt}</li>
-        <li><img src={product.image.link} ></img></li>
-      </ul>
+      <div className="product-display">
+        <img src={product.image.link} alt={product.image.alt}></img>
+        <p className="product_name">{product.product_name}</p>
+        <p className="product_price">£{product.price}</p>
+    </div>
     )
   })
 
 
   return (
-    <div>
+    <div className="recommendations-container">
       {recommendationData}
     </div>
   )

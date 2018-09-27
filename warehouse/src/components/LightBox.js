@@ -6,8 +6,20 @@ class LightBox extends React.Component {
   constructor(props){
     super();
     this.state = {
-      open: true
+      open: true,
+      product: ''
     };
+  }
+
+  componentDidMount(){
+    this.returnProductFromId();
+  }
+
+  returnProductFromId(){
+    const productId = this.props.id.slice(0, -4);
+
+    const productData = Product.data.filter(product => product.id === productId)[0];
+    this.setState({product: productData})
   }
 
   onCloseModal = () => {

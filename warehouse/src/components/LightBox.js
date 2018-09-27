@@ -7,7 +7,8 @@ class LightBox extends React.Component {
     super();
     this.state = {
       open: true,
-      product: ''
+      product: '',
+      images: []
     };
   }
 
@@ -20,6 +21,7 @@ class LightBox extends React.Component {
 
     const productData = Product.data.filter(product => product.id === productId)[0];
     this.setState({product: productData})
+    this.setState({images: productData.image_groups[0].images})
   }
 
   onCloseModal = () => {
@@ -27,11 +29,22 @@ class LightBox extends React.Component {
   };
 
   render() {
+
+    const images = this.state.images.map((image) => {
+      return (
+        <div>
+          <img src={image.link}></img>
+        </div>
+      )
+    })
+
     const { open } = this.state;
     return (
       <div>
         <Modal open={open} onClose={this.onCloseModal} center>
-          <h2>Product Information Here</h2>
+          <h4>{this.state.product.name}</h4>
+          <h4>£{this.state.product.price}</h4>
+          {images}
         </Modal>
       </div>
     );

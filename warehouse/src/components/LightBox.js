@@ -1,13 +1,29 @@
 import React from 'react';
+import Product from '../data/product.json';
+import Modal from 'react-responsive-modal';
 
-const LightBox = (props) => {
-  if (!props.id) return null;
+class LightBox extends React.Component {
+  constructor(props){
+    super();
+    this.state = {
+      open: true
+    };
+  }
 
-  return(
-    <div>
-      <h1 className='lightbox'>Hello world</h1>
-    </div>
-  )
+  onCloseModal = () => {
+    this.setState({ open: false });
+  };
+
+  render() {
+    const { open } = this.state;
+    return (
+      <div>
+        <Modal open={open} onClose={this.onCloseModal} center>
+          <h2>Product Information Here</h2>
+        </Modal>
+      </div>
+    );
+  }
 }
 
 export default LightBox;

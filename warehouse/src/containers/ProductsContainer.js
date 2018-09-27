@@ -9,20 +9,24 @@ class ProductsContainer extends React.Component {
     super(props);
     this.state = {
       products: Product,
-      recommendations: Recommendations.hits
+      recommendations: Recommendations.hits,
     };
+
+    this.handleProductSelected = this.handleProductSelected.bind(this);
+  }
+
+  handleProductSelected(product) {
+    console.log(product);
   }
 
 
   render(){
     return(
       <div>
-        <RecommendationsView recommendations={this.state.recommendations} />
+        <RecommendationsView recommendations={this.state.recommendations} products={this.state.products} onProductSelected={this.handleProductSelected}/>
       </div>
     )
   }
-
-
 
 }
 

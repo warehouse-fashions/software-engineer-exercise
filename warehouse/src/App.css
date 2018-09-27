@@ -3,8 +3,13 @@ body {
   font-size: 90%;
 }
 
+.page-header {
+  text-transform: uppercase;
+  text-align: center;
+}
+
 img {
-  width: 300px;
+  width: 110%;
   height: auto;
 }
 

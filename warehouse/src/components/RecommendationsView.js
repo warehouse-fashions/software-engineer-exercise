@@ -2,6 +2,11 @@ import React from 'react';
 
 const RecommendationsView = (props) => {
   if (!props.recommendations) return null;
+  if (!props.products) return null;
+
+  function displayLightBox(evt) {
+    props.onProductSelected(evt)
+  }
 
   const recommendationData = props.recommendations.map((product) => {
     if (!product.image) {
@@ -13,11 +18,15 @@ const RecommendationsView = (props) => {
       }
     }
 
+    function displayLightBox(id) {
+      props.onProductSelected(id)
+    }
+
     return (
       <div className="product-display">
         <img src={product.image.link} alt={product.image.alt}></img>
-        <p className="product_name">{product.product_name}</p>
-        <p className="product_price">£{product.price}</p>
+        <p className="product_name" onClick={() => displayLightBox(product.product_id)}>{product.product_name}</p>
+        <p className="product_price" >£{product.price}</p>
     </div>
     )
   })
@@ -25,6 +34,7 @@ const RecommendationsView = (props) => {
 
   return (
     <div className="recommendations-container">
+      <h2 className="page-header">We Recommend</h2>
       {recommendationData}
     </div>
   )

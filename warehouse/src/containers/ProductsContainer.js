@@ -1,6 +1,7 @@
 import React from 'react';
 import Recommendations from '../data/recommendations.json';
 import Product from '../data/product.json';
+import RecommendationsView from '../components/RecommendationsView.js';
 
 class ProductsContainer extends React.Component {
 
@@ -8,13 +9,15 @@ class ProductsContainer extends React.Component {
     super(props);
     this.state = {
       products: Product,
-      recommendations: Recommendations
+      recommendations: Recommendations.hits
     };
   }
 
   render(){
     return(
-      <div></div>
+      <div>
+        <RecommendationsView recommendations={this.state.recommendations} />
+      </div>
     )
   }
 

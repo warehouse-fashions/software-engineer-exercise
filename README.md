@@ -1,13 +1,31 @@
-# Warehouse Software Engineer Exercise
+# Warehouse Software Engineer Excercise
 
-In this exercise we would like you to build a web component similar to this [screenshot](recommendations-screenshot.png) using the recommendations [JSON](data/recommendations.json) provided. The component you build should display images, prices be able to link to a product modal/lightbox.
+## Summary
+A web component that uses JSON data to display products and prices. Users are able to select products to see a product lightbox with more images, size and colour information.
 
-The product modal/lightbox should display information on the product clicked on similar to this [screenshot](product-modal-screenshot.png) making sure to include an image carousel, product name, price, colour swatch and size variations. All product information can be found in the following products [JSON](data/product.json) provided. Creativity is accepted but do not alter the JSONs provided.
+##Installation
+```
+1. npm run build
+2. npm start
+3. Go to localhost:3000 in the browser
+```
 
-### Requirements
-* Responsive
-* Reusable code
+## Technology Used
+```
+React.js
+react-responsive-modal
+JavaScript/HTML/CSS
+```
 
-Please fork this repository and commit your changes for review.
+## Build Process
+1. To build the app, I used a container component pattern. The main container fetches the Json data and renders the subcomponents. This was to help with modularity and reusability. 
 
-Amend this Readme in your forked repo and use your commits to outline the component you have created and the decisions that you have made, including any information required for how to run your component. When complete please raise a Pull Request back into master branch for review.
+2. Once suitable data had been fetched from the json files, I created the RecommendationsView components. This was responsible for creating basic information about the products(image, name and price) and displaying them all. 
+
+3. The lighbox was rendered by setting the lighbox state to true when a product is clicked. Using the id of the product, it is able to find the suitable match in the other json file to return more information. The modal displays this information (more images, colours, and sizes). Once the modal is closed, the lightbox state is set to false again. 
+
+4. Basic CSS was used to create a responsive app that works on both desktop and mobile
+
+### Issues
+1. Four products in the json file did not contain images. To counter this I used a default 'no image found' image to use for these products.
+2. I was unable to find a reliable node package to display and image carousel within the modal. To counter this I simply included the images in a list.

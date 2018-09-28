@@ -29,6 +29,18 @@ img {
     width: 20%;
 }
 
+@media screen and (max-width: 1100px) {
+  .product-display {
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .product-display {
+    width: 80%;
+  }
+}
+
 .product_name {
   text-align: center;
 }

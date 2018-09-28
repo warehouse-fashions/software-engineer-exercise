@@ -24,7 +24,7 @@ const RecommendationsView = (props) => {
 
     return (
       <div className="product-display">
-        <img src={product.image.link} alt={product.image.alt}></img>
+        <img src={product.image.link} alt={product.image.alt} onClick={() => displayLightBox(product.product_id)}></img>
         <p className="product_name" onClick={() => displayLightBox(product.product_id)}>{product.product_name}</p>
         <p className="product_price" >£{product.price}</p>
     </div>

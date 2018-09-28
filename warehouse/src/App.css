@@ -16,7 +16,10 @@ img {
 .recommendations-container {
   width: auto;
   margin: 0px 20px;
+}
 
+.recommendations-container:hover {
+  cursor: pointer;
 }
 
 .product-display {
@@ -32,4 +35,22 @@ img {
 
 .product_price {
   text-align: center;
+}
+
+.product-images {
+  width: 60%;
+  height: auto;
+}
+
+.product-colour {
+  width: 5%;
+  height: auto
+}
+
+.product-sizes {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  border: 1px solid black;
+  padding: 1em;
 }

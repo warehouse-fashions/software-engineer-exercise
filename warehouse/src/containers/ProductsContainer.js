@@ -16,6 +16,7 @@ class ProductsContainer extends React.Component {
     };
 
     this.handleProductSelected = this.handleProductSelected.bind(this);
+    this.closeLightbox = this.closeLightbox.bind(this);
   }
 
   handleProductSelected(productId) {
@@ -25,18 +26,24 @@ class ProductsContainer extends React.Component {
     })
   }
 
+  closeLightbox(){
+    this.setState({
+      lightBox: false
+    })
+  }
+
 
   render(){
 
     let lightBoxDisplay = null;
 
     if(this.state.lightBox){
-      lightBoxDisplay = <LightBox id={this.state.productId} />
+      lightBoxDisplay = <LightBox id={this.state.productId} onCloseLightbox={this.closeLightbox}/>
     }
 
     return(
       <div>
-        
+
         <RecommendationsView recommendations={this.state.recommendations} products={this.state.products} onProductSelected={this.handleProductSelected}/>
 
         <div>

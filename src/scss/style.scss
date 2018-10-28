@@ -1,8 +1,13 @@
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
 h1 {
-  font-size: 20px;
+  font-size: 30px;
   text-align: center;
   padding-bottom: 50px;
   padding-top: 50px;
+  font-weight: bold;
 }
 
 h5 {
@@ -11,5 +16,5 @@ h5 {
 }
 
 section {
-  margin: 50px;
+  margin: 50px;  
 }

@@ -20,9 +20,9 @@ HTML | SCSS | JavaScript (ES6) | React | Webpack | Bulma
 - Displays the product name and price
 - Used Bulma to make the app responsive
 
-Due to the restricted time I was unable to complete all tasks as requested in the brief, one of the reasons was because I was unable to successfully render the image link.
+Due to the restricted time recommended to finish this task I did not complete all tasks requested in the brief, one of the reasons was because I was unable to successfully render the image link.
 
 My approach to build the product modal would be to use the modal component in Bulma which would render the data from the product.json file using the same method used to render the recommendations.json file. My aim was to use Flickity to make the carousel for the images.
 
 ### Challenges
-I was unable to successfully display the images as this was in a nested array/object. My approach was to use ``` <img src={data.image.link} /> ``` however this broke the app, I also tried to use map again to iterate over the image array and this was unsuccessful.
+I was unable to successfully display the images as this was in a nested array/object. i first tried ``` <img src={data.image.link}/> ``` however this broke the app, I also tried to use map again to iterate over the image array and this was unsuccessful.

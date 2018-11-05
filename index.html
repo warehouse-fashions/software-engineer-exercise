@@ -201,20 +201,8 @@ text-align: center;
          margin-top: 1px;
          font-size: 8px;
        }
-       .size-box{
- display: inline-block;
- width: 15px;
- height: 15px;
- border: 1px solid black;
- text-align: center;
- font-size: 6px;
-       }
-       .colour-box{
-         width: 10px;
-         height: 10px;
-         border: 1px solid black;
-         display: block;
-       }
+
+
 }
   </style>
 </head>
@@ -227,6 +215,7 @@ text-align: center;
       <p id="prod-price-1" class="center prod-price"></p>
     </div>
     <div class="show-modal" data-id="032743">
+      <!-- data-id == location-->
       <img id="prod-img-2" src="">
 
       <p id="prod-des-2" class="center prod-des"></p>
@@ -257,7 +246,7 @@ text-align: center;
     </div>
   </section>
 
-
+<!-- image slider-->
   <div class="popup" id="popup">
     <div class="popup__content">
       <div class="popup__left">
@@ -268,20 +257,22 @@ text-align: center;
       <button class="button-left" onclick="plusDivs(-1)">&#10094;</button>
       <button class="button-right" onclick="plusDivs(1)">&#10095;</button>
       </div>
-
+<!--information right-->
       <div class="popup__right">
         <span id="close" class="popup__close">&times;</span>
         <p id="testingTitle"></p>
         <p id="testingPrice"></p>
         <p id="testingDescription"></p>
-        <img class="colour-box" id="imgfive" src="">
-        <div class="size-box" id="size-1"></div>
-        <div class="size-box" id="size-2"></div>
-        <div class="size-box" id="size-3"></div>
-        <div class="size-box" id="size-4"></div>
-        <div  class="size-box"id="size-5"></div>
-        <div class="size-box"id="size-6"></div>
-        <div class="size-box"id="size-7"></div>
+        <!--recreate to suit number of colours-->
+        <!-- change image display on colour-->
+
+        <div class="" id="colourCollection">
+
+        </div>
+
+        <div class="" id="sizeCollection">
+
+        </div>
       </div>
 
     </div>
@@ -308,7 +299,6 @@ text-align: center;
 
       $("<p>" + data.hits[1].product_name + "</p>").appendTo("#prod-des-1");
       $("<p>"+ currencyIcon + data.hits[1].price + "</p>").appendTo("#prod-price-1");
-
       $("#prod-img-1").attr("src", data.hits[1].image.link);
 
 
@@ -337,202 +327,334 @@ text-align: center;
       $("<p>"+ currencyIcon + data.hits[11].price + "</p>").appendTo("#prod-price-6");
       $("#prod-img-6").attr("src", data.hits[11].image.link);
 
+      $.getJSON("product.json", function (productData) {
 
+        var supertestsizes = productData.data[0].variants;
 
-$.getJSON("product.json", function (productData) {
-/// loop through json to replace with var and match id with prodcut id each time
+        console.log("testing sizes " + supertestsizes);
 
-  $("<p>" + productData.data[0].variants[0].variation_values.size + "</p>").appendTo("#size-1");
-  $("<p>" + productData.data[0].variants[1].variation_values.size + "</p>").appendTo("#size-2");
-  $("<p>" + productData.data[0].variants[2].variation_values.size + "</p>").appendTo("#size-3");
-  $("<p>" + productData.data[0].variants[3].variation_values.size + "</p>").appendTo("#size-4");
-  $("<p>" + productData.data[0].variants[4].variation_values.size + "</p>").appendTo("#size-5");
-  $("<p>" + productData.data[0].variants[5].variation_values.size + "</p>").appendTo("#size-6");
-  $("<p>" + productData.data[0].variants[6].variation_values.size + "</p>").appendTo("#size-7");
+          for(var i = 0; i < supertestsizes.length; i++) {
+              size = productData.data[0].variants[i].variation_values.size;
+            var sizeIcon = document.createElement("div");
+              sizeIcon.style.width = '25px';
+              sizeIcon.style.height = '25px';
+              sizeIcon.style.display = 'inline-block';
+              sizeIcon.style.border = '1px solid black';
+              sizeIcon.style.textAlign = 'center';
+              sizeIcon.style.marginLeft = '5px';
+              sizeIcon.style.marginTop = '5px';
+              sizeIcon.style.fontSize = '10px';
+              sizeIcon.style.color = '#000000';
+              $("<p>" + size + "</p>").appendTo(sizeIcon);
+              document.getElementById('sizeCollection').append(sizeIcon);
 
-  var contentPanelId;
-  var productId;
+            }
 
-  $('.show-modal').click(function() {
+        var contentPanelId;
+        var productId;
 
-    contentPanelId = $(this).attr("data-id");
+        $('.show-modal').click(function() {
 
-    for(var i = 0; i < productData.data.length; i++) {
-        productId = productData.data[i].id;
-        if(contentPanelId == productId){
-          $('.popup').removeClass('pop-up-hide');
-          $('.popup').addClass('pop-up-show');
+          contentPanelId = $(this).attr("data-id");
+
+          for(var i = 0; i < productData.data.length; i++) {
+              productId = productData.data[i].id;
+              if(contentPanelId == productId){
+                $('.popup').removeClass('pop-up-hide');
+                $('.popup').addClass('pop-up-show');
+              }
+          }
+
+        let imagesArray1 = [];
+        let imagesArraytest = [];
+
+        var firstproducttest = productData.data[1].id;
+
+        for (var i = 0; i < productData.data[1].image_groups[0].images.length; i++) {
+          productId = productData.data[1].image_groups[0].images[i].link;
+          imagesArray1.push(productId);
         }
-    }
 
-  let imagesArray1 = [];
-  let imagesArraytest = [];
-
-  var firstproducttest = productData.data[1].id;
-
-  for (var i = 0; i < productData.data[1].image_groups[0].images.length; i++) {
-    productId = productData.data[1].image_groups[0].images[i].link;
-    imagesArray1.push(productId);
-  }
-
-  for (var i = 0; i < productData.data[1].image_groups[1].images.length; i++) {
-    productId = productData.data[1].image_groups[1].images[i].link;
-    imagesArraytest.push(productId);
-  }
+        for (var i = 0; i < productData.data[1].image_groups[1].images.length; i++) {
+          productId = productData.data[1].image_groups[1].images[i].link;
+          imagesArraytest.push(productId);
+        }
 
 
-  if(contentPanelId == "032937"){
-    $("#imgone").attr("src", imagesArray1[1]);
-    $("#imgtwo").attr("src", imagesArray1[2]);
-    $("#imgthree").attr("src", imagesArray1[3]);
-    $("#imgfour").attr("src", imagesArray1[4]);
-    $("#imgfive").attr("src", imagesArraytest[0]);
-    $("<p>" + data.hits[1].product_name + "</p>").appendTo("#testingTitle");
-    $("<p>"+ currencyIcon + data.hits[1].price + "</p>").appendTo("#testingPrice");
-    $("<p>"+ productData.data[1].long_description + "</p>").appendTo("#testingDescription");
-  }
+        if(contentPanelId == "032937"){
+          $("#imgone").attr("src", imagesArray1[1]);
+          $("#imgtwo").attr("src", imagesArray1[2]);
+          $("#imgthree").attr("src", imagesArray1[3]);
+          $("#imgfour").attr("src", imagesArray1[4]);
+          $("#imgfive").attr("src", imagesArraytest[0]);
+          $("<p>" + data.hits[1].product_name + "</p>").appendTo("#testingTitle");
+          $("<p>"+ currencyIcon + data.hits[1].price + "</p>").appendTo("#testingPrice");
+          $("<p>"+ productData.data[1].long_description + "</p>").appendTo("#testingDescription");
+          var supertest1 = productData.data[1].image_groups;
+              for(var i = 0; i < supertest1.length; i++) {
 
-  let imagesArray2 = [];
-  let imagesArraytest2 = [];
-
-  for(var i = 0; i < productData.data[4].image_groups[0].images.length; i++) {
-
-      productIdtester = productData.data[4].image_groups[0].images[i].link;
-      imagesArray2.push(productIdtester);
-
-  }
-
-  for(var i = 0; i < productData.data[4].image_groups[1].images.length; i++) {
-
-      productId = productData.data[4].image_groups[1].images[i].link;
-      imagesArraytest2.push(productId);
-
-    }
-
-    if(contentPanelId == "032743"){
-      $("#imgone").attr("src", imagesArray2[1]);
-      $("#imgtwo").attr("src", imagesArray2[2]);
-      $("#imgthree").attr("src", imagesArray2[3]);
-      $("#imgfour").attr("src", imagesArray2[4]);
-      $("#imgfive").attr("src", imagesArraytest2[0]);
-
-      $("<p>" + data.hits[4].product_name + "</p>").appendTo("#testingTitle");
-      $("<p>"+ currencyIcon + data.hits[4].price + "</p>").appendTo("#testingPrice");
-      $("<p>"+ productData.data[4].long_description + "</p>").appendTo("#testingDescription");
-
-    }
-
-    let imagesArray3 = [];
-    let imagesArraytest3 = [];
+                testme1 = productData.data[1].image_groups[i].images[0].link;
+                testme2 = productData.data[1].image_groups[i].images[0].alt;
+                //goodbye.push(testme1);
 
 
-    for(var i = 0; i < productData.data[6].image_groups[0].images.length; i++) {
-      productIdtester = productData.data[6].image_groups[0].images[i].link;
-      imagesArray3.push(productIdtester);
-    }
+                var menuIcon = document.createElement("IMG");
+                menuIcon.src = testme1;
+                menuIcon.setAttribute("alt", testme2);
+                menuIcon.style.width = '25px';
+                menuIcon.style.height = '25px';
+                menuIcon.style.marginLeft = '5px';
+                document.getElementById('colourCollection').append(menuIcon);
 
-    for(var i = 0; i < productData.data[6].image_groups[1].images.length; i++) {
-      productId = productData.data[6].image_groups[1].images[i].link;
-      imagesArraytest3.push(productId);
-    }
+              }
+        }
 
-    if(contentPanelId == "032953"){
-      $("#imgone").attr("src", imagesArray3[1]);
-      $("#imgtwo").attr("src", imagesArray3[2]);
-      $("#imgthree").attr("src", imagesArray3[3]);
-      $("#imgfour").attr("src", imagesArray3[4]);
-      $("#imgfive").attr("src", imagesArraytest3[0]);
+        let imagesArray2 = [];
+        let imagesArraytest2 = [];
 
-      $("<p>" + data.hits[6].product_name + "</p>").appendTo("#testingTitle");
-      $("<p>"+ currencyIcon + data.hits[6].price + "</p>").appendTo("#testingPrice");
-      $("<p>"+ productData.data[6].long_description + "</p>").appendTo("#testingDescription");
+        for(var i = 0; i < productData.data[4].image_groups[0].images.length; i++) {
 
-    }
+            productIdtester = productData.data[4].image_groups[0].images[i].link;
+            imagesArray2.push(productIdtester);
 
-    let imagesArray4 = [];
-    let imagesArraytest4 = [];
+        }
 
-    for(var i = 0; i < productData.data[9].image_groups[0].images.length; i++) {
+        for(var i = 0; i < productData.data[4].image_groups[1].images.length; i++) {
 
-        productIdtester = productData.data[9].image_groups[0].images[i].link;
-        imagesArray4.push(productIdtester);
+            productId = productData.data[4].image_groups[1].images[i].link;
+            imagesArraytest2.push(productId);
+          }
 
-    }
-    for(var i = 0; i < productData.data[9].image_groups[1].images.length; i++) {
+          if(contentPanelId == "032743"){
+            $("#imgone").attr("src", imagesArray2[1]);
+            $("#imgtwo").attr("src", imagesArray2[2]);
+            $("#imgthree").attr("src", imagesArray2[3]);
+            $("#imgfour").attr("src", imagesArray2[4]);
+            $("#imgfive").attr("src", imagesArraytest2[0]);
 
-        productId = productData.data[9].image_groups[1].images[i].link;
-        imagesArraytest4.push(productId);
+            $("<p>" + data.hits[4].product_name + "</p>").appendTo("#testingTitle");
+            $("<p>"+ currencyIcon + data.hits[4].price + "</p>").appendTo("#testingPrice");
+            $("<p>"+ productData.data[4].long_description + "</p>").appendTo("#testingDescription");
 
-    }
+            var supertest2 = productData.data[4].image_groups;
+                for(var i = 0; i < supertest2.length; i++) {
 
-    if(contentPanelId == "032464"){
-      $("#imgone").attr("src", imagesArray4[1]);
-      $("#imgtwo").attr("src", imagesArray4[2]);
-      $("#imgthree").attr("src", imagesArray4[3]);
-      $("#imgfour").attr("src", imagesArray4[4]);
-      $("#imgfive").attr("src", imagesArraytest4[0]);
+                  testme1 = productData.data[4].image_groups[i].images[0].link;
+                  testme2 = productData.data[4].image_groups[i].images[0].alt;
+                  //goodbye.push(testme1);
+                  console.log("hello there " + testme1);
 
-      $("<p>" + data.hits[9].product_name + "</p>").appendTo("#testingTitle");
-      $("<p>"+ currencyIcon + data.hits[9].price + "</p>").appendTo("#testingPrice");
-      $("<p>"+ productData.data[9].long_description + "</p>").appendTo("#testingDescription");
+                  var menuIcon = document.createElement("IMG");
+                  menuIcon.src = testme1;
+                  menuIcon.setAttribute("alt", testme2);
+                  menuIcon.style.width = '25px';
+                  menuIcon.style.height = '25px';
+                  menuIcon.style.marginLeft = '5px';
+                  menuIcon.style.marginTop = '5px';
+                  document.getElementById('colourCollection').append(menuIcon);
 
-    }
-    let imagesArray5 = [];
-    let imagesArraytest5 = [];
+                }
+          }
 
-    for(var i = 0; i < productData.data[10].image_groups[0].images.length; i++) {
+          let imagesArray3 = [];
+          let imagesArraytest3 = [];
 
-        productIdtester = productData.data[10].image_groups[0].images[i].link;
-        imagesArray5.push(productIdtester);
 
-    }
-    for(var i = 0; i < productData.data[10].image_groups[1].images.length; i++) {
+          for(var i = 0; i < productData.data[6].image_groups[0].images.length; i++) {
+            productIdtester = productData.data[6].image_groups[0].images[i].link;
+            imagesArray3.push(productIdtester);
+          }
 
-        productId = productData.data[10].image_groups[1].images[i].link;
-        imagesArraytest5.push(productId);
+          for(var i = 0; i < productData.data[6].image_groups[1].images.length; i++) {
+            productId = productData.data[6].image_groups[1].images[i].link;
+            imagesArraytest3.push(productId);
+          }
 
-    }
+          if(contentPanelId == "032953"){
+            $("#imgone").attr("src", imagesArray3[1]);
+            $("#imgtwo").attr("src", imagesArray3[2]);
+            $("#imgthree").attr("src", imagesArray3[3]);
+            $("#imgfour").attr("src", imagesArray3[4]);
+            $("#imgfive").attr("src", imagesArraytest3[0]);
 
-    if(contentPanelId == "033113"){
-      $("#imgone").attr("src", imagesArray5[1]);
-      $("#imgtwo").attr("src", imagesArray5[2]);
-      $("#imgthree").attr("src", imagesArray5[3]);
-      $("#imgfour").attr("src", imagesArray5[4]);
-      $("#imgfive").attr("src", imagesArraytest5[0]);
+            $("<p>" + data.hits[6].product_name + "</p>").appendTo("#testingTitle");
+            $("<p>"+ currencyIcon + data.hits[6].price + "</p>").appendTo("#testingPrice");
+            $("<p>"+ productData.data[6].long_description + "</p>").appendTo("#testingDescription");
 
-      $("<p>" + data.hits[10].product_name + "</p>").appendTo("#testingTitle");
-      $("<p>"+ currencyIcon + data.hits[10].price + "</p>").appendTo("#testingPrice");
-      $("<p>"+ productData.data[10].long_description + "</p>").appendTo("#testingDescription");
+            var supertest3 = productData.data[6].image_groups;
+                for(var i = 0; i < supertest3.length; i++) {
 
-    }
-    let imagesArray6 = [];
-    let imagesArraytest6 = [];
+                  testme1 = productData.data[6].image_groups[i].images[0].link;
+                  testme2 = productData.data[6].image_groups[i].images[0].alt;
+                  //goodbye.push(testme1);
+                  console.log("hello there " + testme1);
 
-    for(var i = 0; i < productData.data[11].image_groups[1].images.length; i++) {
+                  var menuIcon = document.createElement("IMG");
+                  menuIcon.src = testme1;
+                  menuIcon.setAttribute("alt", testme2);
+                  menuIcon.style.width = '25px';
+                  menuIcon.style.height = '25px';
+                  menuIcon.style.marginLeft = '5px';
+                  menuIcon.style.marginTop = '5px';
 
-        productIdtester = productData.data[11].image_groups[1].images[i].link;
-        imagesArray6 .push(productIdtester);
+                  document.getElementById('colourCollection').append(menuIcon);
 
-    }
-    for(var i = 0; i < productData.data[11].image_groups[1].images.length; i++) {
+                }
+          }
 
-        productId = productData.data[11].image_groups[i].images[0].link;
-        imagesArraytest6.push(productId);
+          let imagesArray4 = [];
+          let imagesArraytest4 = [];
 
-    }
+          for(var i = 0; i < productData.data[9].image_groups[0].images.length; i++) {
 
-    if(contentPanelId == "033015"){
-      $("#imgone").attr("src", imagesArray6 [1]);
-      $("#imgtwo").attr("src", imagesArray6 [2]);
-      $("#imgthree").attr("src", imagesArray6 [3]);
-      $("#imgfour").attr("src", imagesArray6 [4]);
-      $("#imgfive").attr("src", imagesArraytest6[0]);
+              productIdtester = productData.data[9].image_groups[0].images[i].link;
+              imagesArray4.push(productIdtester);
 
-      $("<p>" + data.hits[11].product_name + "</p>").appendTo("#testingTitle");
-      $("<p>"+ currencyIcon + data.hits[11].price + "</p>").appendTo("#testingPrice");
-      $("<p>"+ productData.data[11].long_description + "</p>").appendTo("#testingDescription");
+          }
+          for(var i = 0; i < productData.data[9].image_groups[1].images.length; i++) {
 
-    }
+              productId = productData.data[9].image_groups[1].images[i].link;
+              imagesArraytest4.push(productId);
+
+          }
+
+          if(contentPanelId == "032464"){
+            $("#imgone").attr("src", imagesArray4[1]);
+            $("#imgtwo").attr("src", imagesArray4[2]);
+            $("#imgthree").attr("src", imagesArray4[3]);
+            $("#imgfour").attr("src", imagesArray4[4]);
+            $("#imgfive").attr("src", imagesArraytest4[0]);
+
+            $("<p>" + data.hits[9].product_name + "</p>").appendTo("#testingTitle");
+            $("<p>"+ currencyIcon + data.hits[9].price + "</p>").appendTo("#testingPrice");
+            $("<p>"+ productData.data[9].long_description + "</p>").appendTo("#testingDescription");
+
+            var supertest4 = productData.data[9].image_groups;
+                for(var i = 0; i < supertest4.length; i++) {
+
+                  testme1 = productData.data[9].image_groups[i].images[0].link;
+                  testme2 = productData.data[9].image_groups[i].images[0].alt;
+                  //goodbye.push(testme1);
+                  console.log("hello there " + testme1);
+
+                  var menuIcon = document.createElement("IMG");
+                  menuIcon.src = testme1;
+                  menuIcon.setAttribute("alt", testme2);
+                  menuIcon.style.width = '25px';
+                  menuIcon.style.height = '25px';
+                  menuIcon.style.marginLeft = '5px';
+                  menuIcon.style.marginTop = '5px';
+
+                  document.getElementById('colourCollection').append(menuIcon);
+
+                }
+          }
+          let imagesArray5 = [];
+          let imagesArraytest5 = [];
+
+          for(var i = 0; i < productData.data[10].image_groups[0].images.length; i++) {
+
+              productIdtester = productData.data[10].image_groups[0].images[i].link;
+              imagesArray5.push(productIdtester);
+
+          }
+          for(var i = 0; i < productData.data[10].image_groups[1].images.length; i++) {
+
+              productId = productData.data[10].image_groups[1].images[i].link;
+              imagesArraytest5.push(productId);
+
+          }
+
+          if(contentPanelId == "033113"){
+            $("#imgone").attr("src", imagesArray5[1]);
+            $("#imgtwo").attr("src", imagesArray5[2]);
+            $("#imgthree").attr("src", imagesArray5[3]);
+            $("#imgfour").attr("src", imagesArray5[4]);
+            $("#imgfive").attr("src", imagesArraytest5[0]);
+
+            $("<p>" + data.hits[10].product_name + "</p>").appendTo("#testingTitle");
+            $("<p>"+ currencyIcon + data.hits[10].price + "</p>").appendTo("#testingPrice");
+            $("<p>"+ productData.data[10].long_description + "</p>").appendTo("#testingDescription");
+
+            var supertest5 = productData.data[10].image_groups;
+                for(var i = 0; i < supertest5.length; i++) {
+
+                  testme1 = productData.data[10].image_groups[i].images[0].link;
+                  testme2 = productData.data[10].image_groups[i].images[0].alt;
+                  //goodbye.push(testme1);
+                  console.log("hello there " + testme1);
+
+                  var menuIcon = document.createElement("IMG");
+                  menuIcon.src = testme1;
+                  menuIcon.setAttribute("alt", testme2);
+                  menuIcon.style.width = '25px';
+                  menuIcon.style.height = '25px';
+                  menuIcon.style.marginLeft = '5px';
+                  menuIcon.style.marginTop = '5px';
+
+                  document.getElementById('colourCollection').append(menuIcon);
+
+                }
+          }
+          let imagesArray6 = [];
+          let imagesArraytest6 = [];
+
+          for(var i = 0; i < productData.data[11].image_groups[1].images.length; i++) {
+
+              productIdtester = productData.data[11].image_groups[1].images[i].link;
+              imagesArray6 .push(productIdtester);
+
+          }
+          for(var i = 0; i < productData.data[11].image_groups[1].images.length; i++) {
+
+              productId = productData.data[11].image_groups[i].images[0].link;
+              imagesArraytest6.push(productId);
+
+          }
+
+          if(contentPanelId == "033015"){
+            $("#imgone").attr("src", imagesArray6 [1]);
+            $("#imgtwo").attr("src", imagesArray6 [2]);
+            $("#imgthree").attr("src", imagesArray6 [3]);
+            $("#imgfour").attr("src", imagesArray6 [4]);
+            $("#imgfive").attr("src", imagesArraytest6[0]);
+
+            $("<p>" + data.hits[11].product_name + "</p>").appendTo("#testingTitle");
+            $("<p>"+ currencyIcon + data.hits[11].price + "</p>").appendTo("#testingPrice");
+            $("<p>"+ productData.data[11].long_description + "</p>").appendTo("#testingDescription");
+
+            var supertest6 = productData.data[11].image_groups;
+                for(var i = 0; i < supertest6.length; i++) {
+
+                  testme1 = productData.data[11].image_groups[i].images[0].link;
+                  testme2 = productData.data[11].image_groups[i].images[0].alt;
+                  //goodbye.push(testme1);
+                  console.log("hello there " + testme1);
+
+                  var menuIcon = document.createElement("IMG");
+                  menuIcon.src = testme1;
+                  menuIcon.setAttribute("alt", testme2);
+                  menuIcon.style.width = '25px';
+                  menuIcon.style.height = '25px';
+                  menuIcon.style.marginLeft = '5px';
+                  menuIcon.style.marginTop = '5px';
+
+                  document.getElementById('colourCollection').append(menuIcon);
+
+                }
+
+          }
+
+/*
+    var datatest = productData.data[11].image_groups[3].images;
+
+    for(var i of datatest)
+    {
+         var id = i.link;
+         console.log("what is this ? " + id);
+    }*/
+    //var goodbye = [];
+
 
     // save to a variable that is an array
     // push the 1 item in the array to the first image etchings
@@ -595,6 +717,9 @@ $.getJSON("product.json", function (productData) {
     $('#testingPrice').empty();
     $('#testingDescription').empty();
     $('#imgfive').attr('src', '');
+    $('#colourCollection').empty();
+
+
 
 });
 

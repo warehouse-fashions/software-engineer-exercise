@@ -5,28 +5,26 @@ const hit = Vue.component("hit", {
       currencySymbol: ""
     };
   },
-  template: `<div class="hit">
-                    <ul>
-                      <li><img class="productPhoto" v-bind:src="mainPhoto"/></li>
-                      <li class="productName">{{hitProps.product_name}}</li>
-                      <li class="productPrice">{{this.currencySymbol}} {{hitProps.price}}</li>
-                    </ul>
-                  </div>`,
+  template: `<dl class="hit">
+                <div><img class="productPhoto" v-bind:src="mainPhoto"/></div>
+                <dt class="productName">{{hitProps.product_name}}</dt>
+                <dd class="productPrice">{{hitProps.currency == 'GBP' ? "£" : this.currencySymbol}} {{hitProps.price}}</dd>
+            </dl>`,
   methods: {
     currencies: function() {
-      return fetch("data/commonCurrency.json")
+      fetch("data/commonCurrency.json")
         .then(response => {
           return response.json();
         })
         .then(results => {
           this.currencySymbol = results[this.hitProps.currency].symbol;
         });
-
-      return currencySign;
     }
   },
   mounted: function() {
-    this.currencies();
+    this.hitProps.currency == "GBP"
+      ? (this.currencySymbol = "£")
+      : this.currencies();
   }
 });
 
@@ -42,26 +40,25 @@ const lightbox = Vue.component("lightbox", {
       photoIndex: 0
     };
   },
-  template: `<div class="modal">
-              <div v-on:click="$emit('close')" class="modalBackground"></div>
+  template: `<div v-on:click.self="$emit('close')" class="modal">
               <div class="modalContainer">
                   <span class="modalClose" v-on:click="$emit('close')">
                     <?xml version="1.0" ?><!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'><svg enable-background="new 0 0 100 100" id="Layer_1" version="1.1" viewBox="0 0 100 100" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><polygon fill="#010101" points="77.6,21.1 49.6,49.2 21.5,21.1 19.6,23 47.6,51.1 19.6,79.2 21.5,81.1 49.6,53 77.6,81.1 79.6,79.2   51.5,51.1 79.6,23 "/></svg>
                   </span>
                   <div class="lightboxCarousel">
-                    <img :src="currentPhoto" />
+                  <a v-html="currentPhoto.outerHTML"></a>
                     <span @click="photoIndex == 0 ? photoIndex = fullPhotos.length - 1 : photoIndex--" class="navigationButton previousButton"> <?xml version="1.0" ?><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><title/><g data-name="Layer 6" id="Layer_6"><path d="M12.61,63.79l-1.22-1.58L50.37,32l-39-30.21L12.61.21l40,31a1,1,0,0,1,0,1.58Z"/></g></svg>
                     </span>
                     <span @click="photoIndex == fullPhotos.length -1 ? photoIndex = 0 : photoIndex++" class="navigationButton nextButton"> <?xml version="1.0" ?><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><title/><g data-name="Layer 6" id="Layer_6"><path d="M12.61,63.79l-1.22-1.58L50.37,32l-39-30.21L12.61.21l40,31a1,1,0,0,1,0,1.58Z"/></g></svg>
                     </span>
                   </div>
                   <div class="lightboxDetails">
-                    <ul>
-                    <li>{{productInfo.name}}</li>
-                    <li class="productPrice">{{this.currencySymbol}} {{productInfo.price}}</li>
-                    <li><div @click="changeVariant(color.value)" class="variant colorVariant" v-for="color in colors" ><img :src="color.image" /></div></li>
-                    <li><div class="variant sizeVariant" v-for="size in sizes" > {{size.name}} </div></li>
-                    </ul>
+                    <dl>
+                      <dt>{{productInfo.name}}</dt>
+                      <dd class="productPrice">{{this.currencySymbol}} {{productInfo.price}}</dd>
+                      <ul class='variant'><li v-bind:class="{selectedVariant: currentColor == color.value}" @click="changeColor(color.value)" class=" colorVariant" v-for="color in colors" ><img :src="color.image" /></li></ul>
+                      <ul class='variant'><li v-bind:class="{selectedVariant: currentSize == size.value}" @click="changeSize(size.value)" class=" sizeVariant" v-for="size in sizes" > {{size.name}} </li></ul>
+                    </dl>
                   </div>
               </div>
             </div>`,
@@ -70,7 +67,13 @@ const lightbox = Vue.component("lightbox", {
       if (this.fullPhotos.length == 0) {
         return myApp.failPhotoHolder;
       }
-      return this.fullPhotos[this.photoIndex].link;
+      return this.fullPhotos[this.photoIndex].preload;
+    },
+    currentColor: function() {
+      return this.currentVariant.substr(0, 2);
+    },
+    currentSize: function() {
+      return this.currentVariant.substr(2, 4);
     }
   },
   methods: {
@@ -101,19 +104,26 @@ const lightbox = Vue.component("lightbox", {
         this.sizes.push(el)
       );
     },
-    changeVariant: function(variant) {
-      this.currentVariant =
-        variant + this.productInfo.variation_attributes[1].values[0].value;
+    changeColor: function(color) {
+      this.currentVariant = color + this.currentSize;
       this.getFullPhotos(this.currentVariant.substr(0, 2));
+    },
+    changeSize: function(size) {
+      this.currentVariant = this.currentColor + size;
     },
     getFullPhotos: function(variant) {
       let photos = [];
       this.productInfo.image_groups.map(groups => {
         if (groups.view_type == "hi-res" && groups.variation_value == variant) {
           photos = groups.images;
+          photos.map(el => {
+            el.preload = new Image();
+            el.preload.src = el.link;
+          });
         }
       });
       this.fullPhotos = photos;
+      myApp.loadingFlag = false;
     }
   },
   mounted: function() {
@@ -128,6 +138,8 @@ var myApp = new Vue({
   components: { hit },
   data: {
     productShowFlag: false,
+    errorFlag: false,
+    loadingFlag: true,
     products: [],
     recommendations: [],
     selectedProduct: null,
@@ -136,9 +148,10 @@ var myApp = new Vue({
     randomFour: []
   },
   template: ` <div>
-                <div class="header">WE RECOMMEND</div>
-                <div  class="resultsWrapper">
-                  <p v-if="this.recommendations.length == 0" class="alterText"> We couldn't load any results :( Sorry!</p>
+                <h1 class="header">WE RECOMMEND</h1>
+                <div class="resultsWrapper">
+                  <div v-if="loadingFlag" class="lds-ripple"><div></div><div></div></div>
+                  <p v-if="errorFlag" class="alterText"> We couldn't load any results :( Sorry!</p>
                   <hit v-for="(hit, index) in randomFour" :hitProps="hit" :mainPhoto="hit.hasOwnProperty('image') ? hit.image.link : failPhotoHolder"  :key="hit.product_id" v-on:click.native="getProductDetails(hit.product_id)" />
                 </div>
                 <lightbox v-if="this.productShowFlag" :productInfo="this.selectedProduct" :productVariant="this.selectedVariant" v-on:close="closeModal"/>
@@ -156,6 +169,7 @@ var myApp = new Vue({
         rand.push(this.recommendations.hits[randomnumber]);
       }
       this.randomFour = rand;
+      this.loadingFlag = false;
     },
     getProducts: function() {
       fetch("data/product.json")
@@ -178,6 +192,7 @@ var myApp = new Vue({
         });
     },
     getProductDetails: function(id) {
+      this.loadingFlag = true;
       let shortId = id.toString().substr(0, 6);
       let variant = id.toString().substr(6, 9);
       let holder = this.products.data.filter(el => el.id == shortId);

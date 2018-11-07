@@ -1,0 +1,162 @@
+body {
+  background-color: white;
+  font-family: HelveticaNeue, sans-serif;
+}
+
+.header {
+  margin: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+  letter-spacing: 0.05em;
+  font-weight: 1000;
+}
+
+.resultsWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.alterText {
+  margin: 50px;
+  text-align: center;
+}
+
+.hit {
+  cursor: pointer;
+  width: 250px;
+  height: 280px;
+}
+.hit ul {
+  list-style-type: none;
+  width: 100%;
+}
+
+.hit li {
+  text-align: center;
+}
+.productPhoto {
+  width: 250px;
+  height: 250px;
+}
+
+.productName {
+  font-weight: 1000;
+  font-size: 0.7em;
+}
+
+.productPrice {
+  font-size: 1em;
+  font-weight: 300;
+}
+
+.modalBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.2;
+}
+
+.modalContainer {
+  display: flex;
+  position: fixed;
+  top: 125px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 65%;
+  background-color: white;
+}
+
+.modalClose {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  opacity: 0.6;
+  cursor: pointer;
+  z-index: 99;
+}
+
+.modalClose svg {
+  width: 35px;
+  height: 35px;
+}
+
+.lightboxCarousel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.previousButton {
+  left: 5%;
+}
+
+.previousButton svg {
+  transform: rotate(-180deg);
+}
+
+.nextButton {
+  right: 5%;
+}
+
+.navigationButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.navigationButton svg {
+  width: 50px;
+  height: 50px;
+}
+
+.lightboxCarousel img {
+  max-width: 400px;
+}
+
+.lightboxDetails {
+  font-weight: 600;
+  font-size: 1.2em;
+  padding: 15px;
+  width: 55%;
+  height: 100%;
+}
+
+.lightboxDetails li {
+  margin: 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.variant {
+  font-weight: 600;
+  box-sizing: border-box;
+  border: 1px solid #b6b6b6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.colorVariant {
+  width: 46px;
+  height: 46px;
+  margin: 15px;
+  margin-left: 0;
+}
+
+.sizeVariant {
+  flex-shrink: 0;
+  width: 55px;
+  height: 55px;
+  margin: 5px;
+  margin-left: 0;
+}

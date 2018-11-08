@@ -25,3 +25,9 @@ I've decided to use vue.js because I think it suits perfectly for this kind of e
 App is built with 2 components and 1 main app node,
 Single file app so no webpack needed.
 I've also used http-server for live-server during development
+
+Some of the features applied:
+
+⋅⋅* Applied module pattern to avoid poluting global scope with variables
+⋅⋅* Images Preloading
+⋅⋅\* Error handling

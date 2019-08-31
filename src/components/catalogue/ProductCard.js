@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Slide } from 'pure-react-carousel';
+import placeholderImage from '../..//img/placeholder-2000x2000.png';
 
 class ProductCard extends Component {
   constructor(props) {
@@ -9,10 +11,12 @@ class ProductCard extends Component {
     this.handleImageData = this.handleImageData.bind(this);
   }
 
+  /**
+   * Returns a place holder if image path is not returned
+   * TODO: Move handling of data up in to parent component? 
+   */
   handleImageData(image) {
-    console.log(image);
-    
-    const imageSrc = image.length ? image : 'https://via.placeholder.com/2000';
+    const imageSrc = image.length ? image : placeholderImage;
     this.setState( {main_image_src: imageSrc});
 
   }
@@ -22,19 +26,26 @@ class ProductCard extends Component {
   }
 
   render() {
-    const { product_id, name, main_image_alt, currency, selling_price } = this.props;
+    const { key, product_id, name, main_image_alt, currency, selling_price } = this.props;
     const { main_image_src } = this.state;
-    console.log('Props: ', this.props);
-    console.log('State: ', this.state);
+
+    // TODO: Move in to CSS
+    const imgStyle = {
+      maxWidth: '100%'
+    };
 
     return (
-      <div key={product_id} className='ProductCardContainer'>
+      <Slide index={key} className='ProductCardContainer'>
         <article className='ProductCard'>
-          <img src={main_image_src} alt={main_image_alt} />
-          <p>{name}</p>
-          <p>£ {parseFloat(Math.round( selling_price * 100) / 100).toFixed(2)}</p>
+          <div className='ProductCardImage'>
+            <img src={main_image_src} style={imgStyle} alt={main_image_alt} />
+          </div>
+          <div className='ProductCardContent'>
+            <p className='ProductName'>{name}</p>
+            <p className='ProductSellingPrice'>£ {parseFloat(Math.round( selling_price * 100) / 100).toFixed(2)}</p>
+          </div>
         </article>
-      </div>
+      </Slide>
     );
   }
 }

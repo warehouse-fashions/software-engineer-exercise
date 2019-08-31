@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Slide } from 'pure-react-carousel';
+// import { Slide } from 'pure-react-carousel';
 import placeholderImage from '../..//img/placeholder-2000x2000.png';
 
 class ProductCard extends Component {
@@ -26,26 +26,21 @@ class ProductCard extends Component {
   }
 
   render() {
-    const { key, product_id, name, main_image_alt, currency, selling_price } = this.props;
+    const { key, product_id, name, main_image_alt, currency, selling_price, onClick } = this.props;
     const { main_image_src } = this.state;
 
-    // TODO: Move in to CSS
-    const imgStyle = {
-      maxWidth: '100%'
-    };
-
     return (
-      <Slide index={key} className='ProductCardContainer'>
-        <article className='ProductCard'>
+      <div index={key} className='ProductCardContainer'>
+        <article className='ProductCard' onClick={onClick}>
           <div className='ProductCardImage'>
-            <img src={main_image_src} style={imgStyle} alt={main_image_alt} />
+            <img src={main_image_src} alt={main_image_alt} />
           </div>
           <div className='ProductCardContent'>
             <p className='ProductName'>{name}</p>
-            <p className='ProductSellingPrice'>£ {parseFloat(Math.round( selling_price * 100) / 100).toFixed(2)}</p>
+            <p className='ProductSellingPrice'>£{parseFloat(Math.round( selling_price * 100) / 100).toFixed(2)}</p>
           </div>
         </article>
-      </Slide>
+      </div>
     );
   }
 }

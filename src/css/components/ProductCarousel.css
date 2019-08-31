@@ -13,6 +13,10 @@
 }
 
 /* ProductCard specific Styling */
+.ProductCard .ProductCardImage img {
+  max-width: 100%;
+}
+
 .ProductCard .ProductCardContent {
   margin: 15px 0;
 }

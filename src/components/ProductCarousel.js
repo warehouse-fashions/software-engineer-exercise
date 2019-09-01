@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../css/components/ProductCarousel.css';
 import ProductCard from './catalogue/ProductCard';
 import ProductDetailsView from './catalogue/ProductDetailsView';
-import Lightbox from './Lighbox';
+import Lightbox from './Lightbox';
 
 // Import Slick Carousel
 import Slider from 'react-slick';

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../css/components/ProductCarousel.css';
 import ProductCard from './catalogue/ProductCard';
+import ProductDetailsView from './catalogue/ProductDetailsView';
 import Lightbox from './Lighbox';
 
 // Import Slick Carousel
@@ -13,7 +14,8 @@ class ProductCarousel extends Component {
     super(props);
     this.state = {
       recommendations: [],
-      selectedProductId: 0,
+      selectedVariantId: 0,
+      selectedProduct: undefined,
       isLightboxOpen: false
     };
 
@@ -25,24 +27,32 @@ class ProductCarousel extends Component {
     fetch(`/api/products/recommendations`)
       .then(response => response.json())
       .then(data => this.setState( {recommendations: data.hits} ));
+
+    fetch(`/api/products`)
+      .then(response => response.json())
+      .then(data => this.setState( {products: data.data} ));
   }
 
-  handleOpenLightbox(productId, e) {
-    this.setState({ selectedProductId: productId, isLightboxOpen: true });
+  handleOpenLightbox(variantId) {
+    const { products } = this.state;
+    const productId = variantId.slice(0, -4);
+    const selectedProduct = products.filter(p => { return p.id === productId})[0];
 
-    // TODO: Remove console
-    console.log('pid: ', this.state.selectedProductId);
-    console.log('lb: ', this.state.isLightboxOpen);
+    this.setState(
+      {
+        selectedVariantId: variantId,
+        selectedProduct: selectedProduct,
+        isLightboxOpen: true
+      }
+    );
   }
 
   handleCloseLightbox() {
-    console.log('PC Before Close:', this.state.isLightboxOpen);
     this.setState({ isLightboxOpen: false });
-    console.log('PC After Close:', this.state.isLightboxOpen);
   };
 
   render() {
-    const { recommendations, selectedProductId, isLightboxOpen } = this.state;
+    const { recommendations, selectedVariantId, selectedProduct, isLightboxOpen } = this.state;
     const { name } = this.props;
 
     // Workaround for click event not detecting mousemove
@@ -63,7 +73,7 @@ class ProductCarousel extends Component {
         main_image_alt= {item.image ? item.image.alt : ''}
         currency= {item.currency}
         selling_price= {item.price}
-        onClick={e => !isDragging && this.handleOpenLightbox(item.product_id, e)}
+        onClick={e => !isDragging && this.handleOpenLightbox(item.product_id)}
       />
     );
 
@@ -73,6 +83,7 @@ class ProductCarousel extends Component {
       speed: 500,
       slidesToShow: 4,
       slidesToScroll: 4,
+      arrows: false,
       responsive: [
         {
           breakpoint: breakpointLarge,
@@ -97,7 +108,7 @@ class ProductCarousel extends Component {
         }
       ],
       beforeChange: () => isDragging = true,
-      afterChange: () => isDragging = false,
+      afterChange: () => isDragging = false
     };
 
     return (
@@ -111,12 +122,8 @@ class ProductCarousel extends Component {
           </Slider>
         </div>
 
-        <div>
-          <span>Selected Product ID: {selectedProductId}</span>
-        </div>
-
         <Lightbox handleOpenLightbox={isLightboxOpen} handleCloseLightbox={this.handleCloseLightbox}>
-          <div>This is a test: {selectedProductId}</div>
+          <ProductDetailsView product={selectedProduct} selectedVariantId={selectedVariantId} />
         </Lightbox>
       </div>
     );

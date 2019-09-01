@@ -17,7 +17,6 @@ class ProductCard extends Component {
   handleImageData(image) {
     const imageSrc = image.length ? image : placeholderImage;
     this.setState( {main_image_src: imageSrc});
-
   }
 
   componentDidMount() {
@@ -25,7 +24,7 @@ class ProductCard extends Component {
   }
 
   render() {
-    const { key, product_id, name, main_image_alt, currency, selling_price, onClick } = this.props;
+    const { key, name, main_image_alt, selling_price, onClick } = this.props;
     const { main_image_src } = this.state;
 
     return (

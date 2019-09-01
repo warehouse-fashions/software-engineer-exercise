@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../css/components/ProductCarousel.css';
 import ProductCard from './catalogue/ProductCard';
+import Lightbox from './Lighbox';
 
 // Import Slick Carousel
 import Slider from 'react-slick';
@@ -12,10 +13,12 @@ class ProductCarousel extends Component {
     super(props);
     this.state = {
       recommendations: [],
-      clickedProductId: 0
+      selectedProductId: 0,
+      isLightboxOpen: false
     };
 
-    this.handleCardClick = this.handleCardClick.bind(this);
+    this.handleOpenLightbox = this.handleOpenLightbox.bind(this);
+    this.handleCloseLightbox = this.handleCloseLightbox.bind(this);
   }
 
   componentDidMount() {
@@ -24,15 +27,22 @@ class ProductCarousel extends Component {
       .then(data => this.setState( {recommendations: data.hits} ));
   }
 
-  handleCardClick(productId, e) {
-    this.setState({ clickedProductId: productId });
+  handleOpenLightbox(productId, e) {
+    this.setState({ selectedProductId: productId, isLightboxOpen: true });
 
-    //TODO: Remove console
-    console.log(this.state.clickedProductId);
+    // TODO: Remove console
+    console.log('pid: ', this.state.selectedProductId);
+    console.log('lb: ', this.state.isLightboxOpen);
   }
 
+  handleCloseLightbox() {
+    console.log('PC Before Close:', this.state.isLightboxOpen);
+    this.setState({ isLightboxOpen: false });
+    console.log('PC After Close:', this.state.isLightboxOpen);
+  };
+
   render() {
-    const { recommendations } = this.state;
+    const { recommendations, selectedProductId, isLightboxOpen } = this.state;
     const { name } = this.props;
 
     // Workaround for click event not detecting mousemove
@@ -53,7 +63,7 @@ class ProductCarousel extends Component {
         main_image_alt= {item.image ? item.image.alt : ''}
         currency= {item.currency}
         selling_price= {item.price}
-        onClick={e => !isDragging && this.handleCardClick(item.product_id, e)}
+        onClick={e => !isDragging && this.handleOpenLightbox(item.product_id, e)}
       />
     );
 
@@ -100,6 +110,14 @@ class ProductCarousel extends Component {
             {ProductRecommendations}
           </Slider>
         </div>
+
+        <div>
+          <span>Selected Product ID: {selectedProductId}</span>
+        </div>
+
+        <Lightbox handleOpenLightbox={isLightboxOpen} handleCloseLightbox={this.handleCloseLightbox}>
+          <div>This is a test: {selectedProductId}</div>
+        </Lightbox>
       </div>
     );
   }

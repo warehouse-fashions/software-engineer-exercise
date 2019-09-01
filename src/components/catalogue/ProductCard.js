@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-// import { Slide } from 'pure-react-carousel';
-import placeholderImage from '../..//img/placeholder-2000x2000.png';
+import placeholderImage from '../../img/placeholder-2000x2000.png';
 
 class ProductCard extends Component {
   constructor(props) {

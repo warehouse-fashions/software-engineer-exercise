@@ -27,7 +27,7 @@ This is a node application using React and Express with the following:
 ### Installation
 Run the following commands in your terminal:
 
-* `npm install` - Ensures the node modules are all accounted for. This shouldn't be necessary as I've committed them to the repo.
+* `npm install` - Install node modules. I didn't commit them in the end as the diff was too large for code review.
 * `npm run dev` - This runs both the server and React application.
 
 Next, go to `http://localhost:3000/` in your browser.
@@ -107,6 +107,7 @@ At present, the swatch image does not contain the variant id but the color id is
 * Aforementioned refactor for container pattern
 * Clean up data handling
 * Better commenting
+* Better image placeholder
 * Complete styling of ProductDetails (Lightbox content)
 * Handle variant select in ProductDetails (Lightbox content)
 * Font styling isn't a perfect match for design

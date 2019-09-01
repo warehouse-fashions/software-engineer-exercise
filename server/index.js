@@ -5,18 +5,20 @@ const fs = require('fs');
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// Get Products from data file and create endpoint
+// Get Product Recommendations from data file and create endpoint
+let productRecommendations = JSON.parse(fs.readFileSync('./data/recommendations.json'));
+
+// Get Products from data file
 let products = JSON.parse(fs.readFileSync('./data/product.json'));
 
+// Endpoints for products and product by id
 app.get('/api/products', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
   res.status(200);
   res.send(products);
-})
+});
 
-// Get Product Recommendations from data file and create endpoint
-let productRecommendations = JSON.parse(fs.readFileSync('./data/recommendations.json'));
-
+// Endpoint for product recommendations
 app.get('/api/products/recommendations', (req, res) => {
   res.setHeader('Content-Type', 'application/json');  
   res.status(200);

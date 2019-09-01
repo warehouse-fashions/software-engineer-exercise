@@ -1,0 +1,12 @@
+.lightboxOverlay {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.lightboxModal {
+  width: 100%;
+  padding: 0;
+}
+
+.lightboxIcon {
+  fill: #cecece;
+}

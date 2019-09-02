@@ -75,9 +75,9 @@ Another reason that I pulled out `pure-react-carousel` and introduced `Slick` wa
 
 In order to trigger the lightbox that would display my product data, I needed to send the click event back to the parent.
 
-However, the carousel (this was in both modules) was unable to distinguish between a drag and click event. Upon dragging the carousel to see my next products, the `mousedownmove` isn't detected so the lightbox opens.
+However, the carousel (this was in both modules) was unable to distinguish between a drag and click event. Upon dragging the carousel to see my next products, the `mousemove` isn't detected so the lightbox opens.
 
-I noticed in the Slick documentation there two properties that might allow me to work around this issue:
+I noticed in the Slick documentation that there are two properties that might allow me to work around this issue:
 * `beforeChange`
 * `afterChange`
 

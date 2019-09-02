@@ -1,0 +1,35 @@
+/* Very basic styling for ProductCarousel component */
+
+.ProductCarousel {
+  text-align: center;
+}
+
+.ProductCarousel .ListingHeader {
+  margin-bottom: 15px;
+}
+
+.ProductCarousel h1 {
+  font-size: 15px;
+}
+
+/* ProductCard specific Styling */
+.ProductCard .ProductCardImage img {
+  max-width: 100%;
+}
+
+.ProductCard .ProductCardContent {
+  margin: 15px 0;
+}
+
+.ProductCard p {
+  padding-bottom: 5px;
+}
+
+.ProductCard .ProductName {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.ProductCard .ProductSellingPrice {
+  font-size: 14px;
+}

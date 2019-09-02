@@ -1,0 +1,19 @@
+.ProductDetailsView > div {
+  float: left;
+}
+
+@media only screen and (max-width: 600px) {
+  .ProductDetailsView > div {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 601px) {
+  .ProductDetailsView > div {
+    width: 50%;
+  }
+}
+
+.ProductDetailsView .ImageCarousel img {
+  max-width: 100%;
+}

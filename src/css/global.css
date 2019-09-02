@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+  font-family: HelveticaNeue, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+p {
+  margin: 0;
+}

@@ -24,6 +24,10 @@ fetch('data/recommendations.json')
                 return `
                 <div class="item">
                 <img class="item-image" src="${product.image['link']}">
+                <div class="prod-info-container">
+                <p class="prod-title">${product.product_name}<p>
+                <p class="prod-price">£${product.price}.00</p>
+                </div>
                 </div>
                 ` 
             }

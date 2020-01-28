@@ -1,5 +1,8 @@
-let app = document.querySelector('.container');
+let app = document.querySelector('.container')
+app.innerHTML = `
+    <h1 class="app-title">we recommend</h1>
 
+    `;
 
 fetch('data/recommendations.json')
     .then(function(res) {
@@ -8,10 +11,11 @@ fetch('data/recommendations.json')
     })
     .then(function(data) {
             console.log(data.hits)
-            let box = document.createElement('div');
+            let box = document.createElement('div')
             box.classList.add('boxy')
             app.appendChild(box)
-            let innerbox = document.createElement('div');
+
+            let innerbox = document.createElement('div')
             innerbox.classList.add('inner-boxy')
             box.appendChild(innerbox)
 
@@ -34,7 +38,9 @@ fetch('data/recommendations.json')
 
 
 
-app.innerHTML = `
-    <h1 class="app-title">we recommend</h1>
 
-    `;
+
+    // next add the title and the price to the items div
+    // create two divs, one for title other for price.app-title
+    // append these to item as children of item
+    // position below image (display: flex; flex-direction: column)

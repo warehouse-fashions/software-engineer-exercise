@@ -3,22 +3,18 @@
 //Fonts
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
+//Sections
+@import "./modal";
+@import "./recommendation";
+
 body {
     font-family: 'Roboto', sans-serif;
 }
 
-.custom_projects_carousel{
-    width: 100%;
-    min-height: 500px;
-
-    img{
-        width: 100%;
-    }
-}
-
-.custom_projects_nextIcon, .custom_projects_prevIcon{
-    color: $col_lightBlack;
-    margin: 0;
-    font-size: 2.5rem;
-    vertical-align: text-bottom;
+.custom_main_title{
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.4rem;
+    margin: 1rem 0 2rem 0;
+    text-transform: uppercase;
 }

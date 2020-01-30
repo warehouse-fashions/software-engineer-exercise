@@ -1,8 +1,8 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import ProductModal from "./ProductModal";
+
 
 class Recommendation extends React.Component {
   state = {
@@ -61,14 +61,11 @@ class Recommendation extends React.Component {
   render() {
     return (
       <div>
-        <Card onClick={this.handleShow} style={{ width: "18rem" }}>
+        <Card onClick={this.handleShow} className="custom_recommendation_card" style={{ width: "18rem", border: "none"}}>
           <Card.Img variant="top" src={this.props.data.image.link} />
-          <Card.Body>
-            <Card.Title>{this.props.data.product_name}</Card.Title>
+          <Card.Body className="custom_recommendation_body">
+            <Card.Title className="custom_recommendation_title">{this.props.data.product_name}</Card.Title>
             <Card.Text>{`£${this.props.data.price}`}</Card.Text>
-            <Button variant="primary" >
-              Launch demo modal
-            </Button>
           </Card.Body>
         </Card>
         {this.renderModal()}

@@ -1,0 +1,23 @@
+
+.custom_recommendation_card{
+    height: 25rem;
+    text-align: center;
+    font-size: 0.8rem;
+    border: none;
+    transform: scale(1);
+    transition: all .1s ease-out;
+
+    &:hover{
+        cursor: pointer;
+        transform: scale(1.05);
+    }
+
+    .custom_recommendation_title{
+        font-size: 1em;
+        font-weight: bold;
+    }
+
+    custom_recommendation_body{
+        font-size: 0.7em;
+    } 
+}

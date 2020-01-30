@@ -1,5 +1,8 @@
 import React from "react";
 import Recommendation from "./Recommendation";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import "../style/main.scss";
 
 class App extends React.Component {
@@ -31,9 +34,9 @@ class App extends React.Component {
         const recommendations = data.map((recommendation, keyVal) => {
             if(recommendation.image){
                 return (
-                  <div key={keyVal} className="col-4 col-md-3 col-lg-3 m-3">
+                  <Col key={keyVal} xs={12} sm={6} md={4} lg={3} m={3}>
                       <Recommendation data={recommendation} />
-                  </div>
+                  </Col>
                 );
             }
           return <div key={keyVal}></div>
@@ -44,12 +47,12 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="container">
-        <h1 className="display-4 text-center">WE RECOMMEND</h1>
-        <div className="row">
-            {this.renderRecommendations()}
-        </div>
-      </div>
+      <Container>
+        <h1 className="custom_main_title">WE RECOMMEND</h1>
+        <Row className="show-grid">
+          {this.renderRecommendations()}
+        </Row>
+      </Container>
     );
   }
 }

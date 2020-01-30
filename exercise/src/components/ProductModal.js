@@ -1,5 +1,4 @@
 import React from "react";
-import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -31,7 +30,7 @@ class ProductModal extends React.Component{
             const swatches = this.props.imageGroup.filter((imgGrp) => imgGrp.view_type === "swatch");
             const renderedSwatches = swatches.map((swatchObject, keyVal) => {
                 return (
-                    <div key={keyVal}>
+                    <div key={keyVal} className="custom_modal_swatch">
                         <img src={swatchObject.images[0].link} alt=""/>
                     </div>
                 );
@@ -45,9 +44,11 @@ class ProductModal extends React.Component{
             const sizes = this.props.variants;
             const renderedSizes = sizes.map((sizeVariant, keyVal) => {
                 return (
-                    <div key={keyVal}>
-                        <p>{sizeVariant.variation_values.size}</p>
+                  <Col sm={2} key={keyVal}>
+                    <div className="custom_modal_size">
+                      <p>{sizeVariant.variation_values.size}</p>
                     </div>
+                  </Col>
                 );
             });
             return renderedSizes;
@@ -67,17 +68,17 @@ class ProductModal extends React.Component{
                     <Carousel
                       indicators={false}
                       interval={null}
-                      className="bg-light custom_projects_carousel"
+                      className="bg-light custom_modal_carousel"
                       nextIcon={
                         <FontAwesomeIcon
                           icon="chevron-right"
-                          className="custom_projects_nextIcon"
+                          className="custom_modal_nextIcon"
                         />
                       }
                       prevIcon={
                         <FontAwesomeIcon
                           icon="chevron-left"
-                          className="custom_projects_nextIcon"
+                          className="custom_modal_nextIcon"
                         />
                       }
                     >
@@ -85,11 +86,16 @@ class ProductModal extends React.Component{
                     </Carousel>
                   </Col>
                   <Col sm={6}>
-                    {this.props.title}
-                    {`£${this.props.price}`}
-                    {this.renderSwatches()}
-                    {this.renderSizes()}
-                    {this.props.description}
+                    <h4 className="custom_modal_title">{this.props.title}</h4>
+                    <p>{`£${this.props.price}`}</p>
+                    <div className="custom_modal_swatches">
+                        {this.renderSwatches()}
+                    </div>
+                    <div className="custom_modal_sizes">
+                      <Row className="show-grid">
+                        {this.renderSizes()}
+                      </Row>
+                    </div>
                   </Col>
                 </Row>
               </Container>

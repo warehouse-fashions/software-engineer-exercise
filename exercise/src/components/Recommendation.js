@@ -41,19 +41,17 @@ class Recommendation extends React.Component {
     if(data){
       return (
         <>
-          <Modal show={this.state.show} onHide={this.handleClose}>
-            <Modal.Header closeButton>
-              <Modal.Title>{this.state.selectedProductData.name}</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>{this.state.selectedProductData.long_description}</Modal.Body>
-            <Modal.Footer>
-              <Button variant="secondary" onClick={this.handleClose}>
-                Close
-            </Button>
-              <Button variant="primary" onClick={this.handleClose}>
-                Save Changes
-            </Button>
-            </Modal.Footer>
+          <Modal show={this.state.show} size="xl" onHide={this.handleClose}>
+            <ProductModal
+              title={data.name}
+              description={data.long_description}
+              currency={data.currency}
+              price={this.props.data.price}
+              variants={data.variants}
+              imageGroup={data.image_groups}
+              handleClose={this.handleClose}
+              handleShow={this.handleShow}
+            />
           </Modal>
         </>
       );
@@ -61,7 +59,6 @@ class Recommendation extends React.Component {
   };
 
   render() {
-    // console.log(this.props.data);
     return (
       <div>
         <Card onClick={this.handleShow} style={{ width: "18rem" }}>

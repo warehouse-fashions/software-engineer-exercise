@@ -1,5 +1,6 @@
 import React from "react";
 import Recommendation from "./Recommendation";
+import "../style/main.scss";
 
 class App extends React.Component {
   state = {
@@ -30,9 +31,9 @@ class App extends React.Component {
         const recommendations = data.map((recommendation, keyVal) => {
             if(recommendation.image){
                 return (
-                <div key={keyVal} className="col-4 col-md-3 col-lg-3 m-3">
-                    <Recommendation data={recommendation} />
-                </div>
+                  <div key={keyVal} className="col-4 col-md-3 col-lg-3 m-3">
+                      <Recommendation data={recommendation} />
+                  </div>
                 );
             }
           return <div key={keyVal}></div>

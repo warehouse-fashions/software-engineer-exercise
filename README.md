@@ -8,9 +8,7 @@ https://github.com/warehouse-fashions/software-engineer-exercise
 This implementation uses React
 
 ### Installation
-`cd exercise`
 `npm install`
 
 ### Run Project
-`cd exercise`
 `npm run`

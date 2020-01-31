@@ -6,16 +6,18 @@ import ProductModal from "./ProductModal";
 
 class Recommendation extends React.Component {
   state = {
-    show: false,
-    selectedProductData: []
+    show: false,  //Modal initial state
+    selectedProductData: [] 
   };
 
+  //Modal Close
   handleClose = () => {
     this.setState({
       show: false
     });
   };
 
+  //Modal Show - get data every time user opens a modal for that product from product.json
   handleShow = () => {
     this.setState({
       show: true
@@ -23,6 +25,7 @@ class Recommendation extends React.Component {
     this.getData(this.props.data.product_id);
   }
 
+  //Store data for selected product
   getData = (productID) => {
     fetch("data/product.json")
     .then(res => {

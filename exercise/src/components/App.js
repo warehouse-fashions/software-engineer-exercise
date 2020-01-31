@@ -14,6 +14,8 @@ class App extends React.Component {
     this.fetchData();
   };
 
+
+  //Get List of Recommendations data and store it (hits only)
   fetchData = () => {
     fetch("data/recommendations.json")
     .then(res => {
@@ -27,6 +29,7 @@ class App extends React.Component {
     .catch(err => console.log(err));
   }
 
+  //Render Recommendation Components only if it has an image
   renderRecommendations = () => {
       const data = this.state.recommendationsData;
 

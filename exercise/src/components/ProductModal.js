@@ -11,6 +11,7 @@ class ProductModal extends React.Component{
       selectedSwatch: 0
     }
 
+    //Render Carousel and containing images for selected swatch
     renderCarousel = () => {
         if (this.props.imageGroup){
             const images = this.props.imageGroup.filter((imgGrp) => imgGrp.view_type === "hi-res");

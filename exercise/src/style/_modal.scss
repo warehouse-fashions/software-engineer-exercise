@@ -61,6 +61,7 @@
             bottom: 0;
             right: 0;
             text-align: center;
+            font-size: 1rem;
         }
 
         &:hover{
@@ -70,3 +71,33 @@
         }
     }
 }
+
+//Media Queries 
+//When window becomes extra large size
+@media(min-width: 1200px){
+  .custom_modal_carousel{
+    min-height: 300px;
+  }
+}
+
+//When window becomes large size
+@media(min-width: 992px){
+    .custom_modal_carousel{
+        min-height: 200px;
+    }
+}
+
+//When window becomes medium size
+@media(min-width: 768px){
+    .custom_modal_carousel{
+        min-height: 200px;
+    }
+}
+
+//When window becomes small
+@media(min-width: 576px){
+    .custom_modal_carousel{
+        min-height: 200px;
+    }
+}
+

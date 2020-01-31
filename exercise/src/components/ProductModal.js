@@ -7,16 +7,20 @@ import Carousel from "react-bootstrap/Carousel";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class ProductModal extends React.Component{
+    state = {
+      selectedSwatch: 0
+    }
+
     renderCarousel = () => {
         if (this.props.imageGroup){
             const images = this.props.imageGroup.filter((imgGrp) => imgGrp.view_type === "hi-res");
-            const renderedImages = images[0].images.map((imgObject, keyVal) => {
+            const renderedImages = images[this.state.selectedSwatch].images.map((imgObject, keyVal) => {
               return (
                 <Carousel.Item key={keyVal}>
                   <img
                     src={imgObject.link}
                     width="200"
-                    alt="dress_img"
+                    alt={imgObject.alt}
                   />
                 </Carousel.Item>
               );
@@ -30,9 +34,9 @@ class ProductModal extends React.Component{
             const swatches = this.props.imageGroup.filter((imgGrp) => imgGrp.view_type === "swatch");
             const renderedSwatches = swatches.map((swatchObject, keyVal) => {
                 return (
-                    <div key={keyVal} className="custom_modal_swatch">
-                        <img src={swatchObject.images[0].link} alt=""/>
-                    </div>
+                  <div key={keyVal} className="custom_modal_swatch" onClick={() => {this.setState({ selectedSwatch: keyVal })}}>
+                      <img src={swatchObject.images[0].link} alt=""/>
+                  </div>
                 );
             });
             return renderedSwatches;
@@ -44,9 +48,9 @@ class ProductModal extends React.Component{
             const sizes = this.props.variants;
             const renderedSizes = sizes.map((sizeVariant, keyVal) => {
                 return (
-                  <Col sm={2} key={keyVal}>
+                  <Col xs={2} sm={4} md={3} lg={2} xl={2} key={keyVal}>
                     <div className="custom_modal_size">
-                      <p>{sizeVariant.variation_values.size}</p>
+                      <p className="custom_modal_p">{sizeVariant.variation_values.size}</p>
                     </div>
                   </Col>
                 );

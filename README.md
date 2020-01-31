@@ -12,3 +12,6 @@ This implementation uses React
 
 ### Run Project
 `npm run`
+
+This project has been deployed on Netlify
+https://warehouse-exercise.netlify.com/

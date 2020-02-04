@@ -2,10 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 import App from './App';
-
 import './styles/index.scss';
 import './styles/normalize.scss';
-import './styles/bootstrap-grid.min.css';
+
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

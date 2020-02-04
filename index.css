@@ -31,6 +31,7 @@
     position: relative;
     max-height: 100%;
     max-width: 100%;
+    cursor: pointer;
     /* transform: scale(1.2); */
 }
 
@@ -59,4 +60,21 @@
 
 .prod-price {
     padding-bottom: 0;
+}
+
+.modal-container {
+    background: white;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid black;
+    z-index: 10;
+    width: 950px;
+    max-width: 80%;
+}
+
+.modal-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
 }

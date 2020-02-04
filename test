@@ -1,0 +1,12 @@
+<!-- a page to test dynamic html looking for html errors -->
+
+<div class="modal-header">
+    <div class="modal-title">Example Modal</div>
+    <div class="close-button>&times"></div>
+</div>
+
+<div class="modal-body">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium provident doloremque soluta cumque mollitia, odit impedit dignissimos porro animi! Reiciendis quis ipsa ullam, animi eos, voluptas optio sint fuga quia nemo corporis iure voluptates at
+    cum nesciunt dolores. Possimus adipisci, inventore maiores beatae suscipit minima doloribus sint nam repudiandae facilis sit soluta accusamus ipsum at illum sunt architecto aliquid. Eveniet cumque enim neque. Consequuntur, sit qui! Animi magni ducimus
+    aliquam, omnis soluta distinctio? Expedita ut aliquid earum tempore id rerum?
+</div>

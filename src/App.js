@@ -1,5 +1,5 @@
 import React from 'react';
-import WarehouseCarousel from './containers/warehouseCarousel';
+import WarehouseCarousel from './containers/WarehouseCarousel';
 import { data as ProductData } from './data/product.json';
 
 import './styles/normalize.scss'

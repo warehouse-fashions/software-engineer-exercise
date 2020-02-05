@@ -12,14 +12,14 @@ Please fork this repository and commit your changes for review.
 
 Amend this Readme in your forked repo and use your commits to outline the component you have created and the decisions that you have made, including any information required for how to run your component. When complete please raise a Pull Request back into master branch for review.
 
+## Live Demo
+[https://software-engineer-exercise.herokuapp.com/](https://software-engineer-exercise.herokuapp.com/)
+
 ## Considerations
 
 - Built on react
 - Using react-slick for carousel, Material-ui for icons and CardMedia, react-spring for animated fade
 - Main component 'WarehouseCarousel' takes data as a prop to allow for different data to be passed.
-
-## Live Demo
-[https://software-engineer-exercise.herokuapp.com/](https://software-engineer-exercise.herokuapp.com/)
 
 ## Things to change / Cleanup
 

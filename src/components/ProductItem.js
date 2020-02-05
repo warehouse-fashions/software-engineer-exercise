@@ -119,9 +119,8 @@ const ProductItem = (props) => {
                     <Fade in={open}>
                         <ClickAwayListener onClickAway={handleClose}>
                             <div className='modal-card'>
-                                <div onClick={handleClose} className='modal-close'>
-                                    <CloseIcon />
-                                </div>
+                                    <CloseIcon onClick={handleClose} className='modal-close'/>
+                     
                                 <Slider {...settings} className='modal-carousel'>
                                     {modalImageGroup.map((image) => {
                                         const { alt, link, title } = image;

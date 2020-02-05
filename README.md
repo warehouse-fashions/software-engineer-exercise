@@ -19,7 +19,7 @@ Amend this Readme in your forked repo and use your commits to outline the compon
 - Main component 'WarehouseCarousel' takes data as a prop to allow for different data to be passed.
 
 ## Live Demo
-`https://software-engineer-exercise.herokuapp.com/`
+[https://software-engineer-exercise.herokuapp.com/](https://software-engineer-exercise.herokuapp.com/)
 
 ## Things to change / Cleanup
 

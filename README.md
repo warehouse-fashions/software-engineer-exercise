@@ -12,16 +12,31 @@ Please fork this repository and commit your changes for review.
 
 Amend this Readme in your forked repo and use your commits to outline the component you have created and the decisions that you have made, including any information required for how to run your component. When complete please raise a Pull Request back into master branch for review.
 
-## Considerations:
+## Considerations
 
 - Built on react
 - Using react-slick for carousel, Material-ui for icons and CardMedia, react-spring for animated fade
 - Main component 'WarehouseCarousel' takes data as a prop to allow for different data to be passed.
 
-## Things to change / Cleanup:
+## Live Demo
+`https://software-engineer-exercise.herokuapp.com/`
+
+## Things to change / Cleanup
 
 - Need to fix same modal data showing when modal is clicked as modal is closing.(e.g. when clicking another carousel item when current modal is closing old data persists)
 - Implement button functionality to size and colour boxes
 - add loading spinner when modal is opening 
 - allow extra props to be passed to main 'WarehouseCarousel' component (e.g. className, styles)
 - remove react-slick as carousel API - build react specific carousel component that doesn't use JQuery
+
+## Available Scripts
+
+In the project directory, you can run:
+
+### `npm start`
+
+Runs the app in the development mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.<br />
+You will also see any lint errors in the console.

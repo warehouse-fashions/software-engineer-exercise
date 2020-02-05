@@ -19,19 +19,24 @@ Amend this Readme in your forked repo and use your commits to outline the compon
 
 - Built on react
 - Using react-slick for carousel, Material-ui for icons and CardMedia, react-spring for animated fade
-- Main component 'WarehouseCarousel' takes data as a prop to allow for different data to be passed.
+- Main component '/containers/WarehouseCarousel' takes data as a prop to allow for different data to be passed.
+- 'WarehouseCarousel' also takes all extra props passed to it and applies it to its parent div (so can add extra classes and styling to parent)
 
 ## Things to change / Cleanup
 
 - Need to fix same modal data showing when modal is clicked as modal is closing.(e.g. when clicking another carousel item when current modal is closing old data persists)
-- Implement button functionality to size and colour boxes
+- Implement button functionality to size and colour boxes and handle selected button state that also holds its value.
 - add loading spinner when modal is opening 
-- allow extra props to be passed to main 'WarehouseCarousel' component (e.g. className, styles)
+- allow extra props to be passed to main 'WarehouseCarousel' component. To be able to enable/ disable/ apply custom content. Like being able to change the 'recommendations' title through a prop
 - remove react-slick as carousel API - build react specific carousel component that doesn't use JQuery
 
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `npm install`
+
+Then...
 
 ### `npm start`
 

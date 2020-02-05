@@ -13,7 +13,7 @@ Please fork this repository and commit your changes for review.
 Amend this Readme in your forked repo and use your commits to outline the component you have created and the decisions that you have made, including any information required for how to run your component. When complete please raise a Pull Request back into master branch for review.
 
 ## Live Demo
-[http://software-engineer-exercise.herokuapp.com/](https://software-engineer-exercise.herokuapp.com/)
+[http://software-engineer-exercise.herokuapp.com/](http://software-engineer-exercise.herokuapp.com/)
 
 ## Considerations
 

@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import ProductItem from '../components/ProductItem';
 import { NextArrow, PrevArrow } from '../components/CarouselArrows';
 
-const WarehouseCarousel = ({ProductData}) => {
+const WarehouseCarousel = ({ProductData, ...rest}) => {
 
     const [isDragging, setIsDragging] = useState(false);
     const [draggable, setDraggable] = useState(true);
@@ -49,7 +49,7 @@ const WarehouseCarousel = ({ProductData}) => {
     const toggleDraggable = (value) => setDraggable(value);
 
     return (
-        <div className='carousel-container'>
+        <div className='carousel-container' {...rest}>
             <h1>We Recommend</h1>
             <Slider {...settings} >
                 {ProductData.map((item, index) =>

@@ -29,6 +29,7 @@ Amend this Readme in your forked repo and use your commits to outline the compon
 - add loading spinner when modal is opening 
 - allow extra props to be passed to main 'WarehouseCarousel' component. To be able to enable/ disable/ apply custom content. Like being able to change the 'recommendations' title through a prop
 - remove react-slick as carousel API - build react specific carousel component that doesn't use JQuery
+- need to disable interaction with main carousel once modal is open
 
 ## Available Scripts
 

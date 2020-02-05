@@ -137,8 +137,8 @@ $breakpoints: (
           top: 40px;
           @include min(sm) {
             position: static;
-            min-height: 100%;
             max-width: 650px;
+            max-height:650px;
           }
         }
       }

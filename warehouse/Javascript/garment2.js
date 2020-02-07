@@ -1,5 +1,5 @@
-{
-  "_v": "15.6",
+var garments2 ={
+	"_v": "15.6",
   "_type": "product_result",
   "count": 25,
   "data": [

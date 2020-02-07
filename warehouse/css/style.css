@@ -1,0 +1,131 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+.recommend {
+  display: flex;
+  justify-content: center;
+  font-size: 10px;
+  margin-top: 40px;
+}
+
+.modal {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.719);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #f4f4f4;
+  margin: 0 auto;
+  max-width: 1000px;
+  width: 100%;
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2), 0 7px 20px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: row !important;
+  height: 700px;
+}
+
+.modal-content > div {
+  width: 50%;
+  margin: 0;
+}
+
+.modal-content section {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-content section div {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgb(102, 102, 102);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.modal-content > div:last-child {
+  padding: 15px 40px;
+}
+
+.carousel-inner,
+.carousel-item {
+  height: 100%;
+}
+
+.modal-content .carousel-item img {
+  max-width: 500px;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+}
+
+.closeBtn {
+  color: #ccc;
+  float: right;
+  font-size: 30px;
+}
+
+.closeBtn:hover,
+.closeBtn:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.items {
+  display: flex;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.image {
+  width: 100%;
+  min-height: 500px;
+  object-fit: cover;
+}
+
+.item {
+  width: 25%;
+  text-align: center;
+}
+
+.carousel-control-next-icon {
+  background-image: url("../images/arrow_right.png") !important;
+  width: 60px !important;
+  height: 60px !important;
+}
+
+.carousel-control-prev-icon {
+  background-image: url("../images/arrow_left.png") !important;
+  width: 40px !important;
+  height: 40px !important;
+}
+
+#g-color {
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgb(102, 102, 102);
+  padding: 2px;
+  margin-bottom: 10px;
+}
+
+#g-color img{
+  width: 100%;
+  height: 100%;
+}

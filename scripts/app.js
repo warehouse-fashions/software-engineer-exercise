@@ -2,6 +2,8 @@ function init () {
 
   const app = document.querySelector('#app')
   console.log(app)
+  const images = document.querySelector('.images')
+  console.log(images)
   // const body = document.querySelector('.body')
 
   // const items = []
@@ -26,7 +28,7 @@ function init () {
     fetch('./data/product.json')
       .then(res => res.json())
       .then(product => {
-        console.log(product, 'pro', recommendations, 'rec')
+        console.log(product, 'pro')
         mapItems(product, recommendations)
       })
       .catch(err => {
@@ -36,22 +38,31 @@ function init () {
 
   // Mapping the items to the page using the data from products and recommendations 
   function mapItems(product, recommendations) {
-    console.log(product,'hi')
-    console.log(recommendations,'lo')
+
+    app.innerHTML = recommendations.hits.map(elem => 
+      `
+    <div>
+      ${product.data.map(item => item.name === elem.product_name ? 
+    `
+      <img src=${item.image_groups[0].images[0].link}
+    ` : '')
+
+    .join('')}
+    <div> 
+      <h2>${elem.product_name}</h2>
+    </div>
+
+    </div>`,
+  
+    ).join('')
+
+
+    // console.log(product.data.map(item => item.variants.map((el, i)  => el.product_id.includes(recID[i]))))
+    // console.log(product.data.map(item => item.image_groups.map(i => i.images[0].link)))
+
   }
-
-  // function mapRecommendations(recommendations) {
-  //   // console.log('hello', data.hits.length)
-  //   app.innerHTML = recommendations.hits.map(elem => 
-  //     // console.log(elem)
-  //     `<div> 
-  //     <h2>${elem.product_name}</h2>
-  //     </div>`
-  //   ).join('')
-
-
-  // }
 
 }
 
 document.addEventListener('DOMContentLoaded', init)
+

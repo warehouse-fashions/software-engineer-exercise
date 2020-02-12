@@ -1,10 +1,13 @@
+// complete scroll
+
+// set up modal
+
 function init () {
 
   const app = document.querySelector('#app')
   console.log(app)
   const images = document.querySelector('.images')
   console.log(images)
-  // const body = document.querySelector('.body')
 
   // const items = []
 
@@ -28,7 +31,7 @@ function init () {
     fetch('./data/product.json')
       .then(res => res.json())
       .then(product => {
-        console.log(product, 'pro')
+        console.log(product, 'product')
         mapItems(product, recommendations)
       })
       .catch(err => {
@@ -41,7 +44,7 @@ function init () {
 
     app.innerHTML = recommendations.hits.map(elem => 
       `
-    <div class="item">
+    <div class="items">
       ${product.data.map(item => item.name === elem.product_name ? 
     `
       <img src=${item.image_groups[0].images[0].link}
@@ -60,9 +63,21 @@ function init () {
 
     // console.log(product.data.map(item => item.variants.map((el, i)  => el.product_id.includes(recID[i]))))
     // console.log(product.data.map(item => item.image_groups.map(i => i.images[0].link)))
-
+    const items = document.querySelectorAll('.items')
+    handleClick(items)
   }
 
+  function handleClick (items) {
+    items.forEach(item => item.addEventListener('click', openModal))
+  }
+
+  function openModal () {
+    console.log('clicked')
+  }
+  
+
+  // images.addEventListener('click', openModal)
 }
+
 
 document.addEventListener('DOMContentLoaded', init)

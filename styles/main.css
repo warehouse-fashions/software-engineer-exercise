@@ -13,8 +13,6 @@ body {
   /* display: flex; */
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  width: 100vw;
   /* padding: 10px; */
 }
 
@@ -22,39 +20,40 @@ h1 {
   /* display: flex; */
   text-align: center;
   padding-top: 40px;
+  padding-bottom: 40px;
 }
 
 
 #app {
 display: flex;
-flex-wrap: no-wrap;
-overflow-x: scroll;
+flex-wrap: wrap;
+/* overflow-x: scroll; */
 scroll-behavior: smooth;
 justify-content: center;
 align-items: center;
-height: 90vh;
-width: 90vw;
+height: 100vh;
+width: 100vw;
 }
 
-.item {
+.items {
   display: flex;
   flex-direction: column;
+  flex-basis: 18%;
   justify-content: center;
   align-items: center;
-  height: 500px;
-  width: 400px;
+  height: 400px;
+  width: 20vw;
   padding: 10px;
-  /* background-color: aqua; */
-  
+  margin: 10px;
 }
 
 /* put padding on first child to push scroll along */
 
 img{
-  width: 400px;
-  height: 60vh;
+  width: 200px;
+  height: 250px;
 }
 
 h2 {
-
+margin: 10px;
 }

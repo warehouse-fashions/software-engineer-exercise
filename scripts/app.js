@@ -41,7 +41,7 @@ function init () {
 
     app.innerHTML = recommendations.hits.map(elem => 
       `
-    <div>
+    <div class="item">
       ${product.data.map(item => item.name === elem.product_name ? 
     `
       <img src=${item.image_groups[0].images[0].link}
@@ -50,6 +50,7 @@ function init () {
     .join('')}
     <div> 
       <h2>${elem.product_name}</h2>
+      <p>£${elem.price}.00</p>
     </div>
 
     </div>`,
@@ -65,4 +66,3 @@ function init () {
 }
 
 document.addEventListener('DOMContentLoaded', init)
-

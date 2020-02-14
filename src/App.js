@@ -4,7 +4,7 @@ import recommendations from './data/recommendations'
 import products from './data/product'
 
 
-function getProduct (productId) {
+function getProduct(productId) {
     for (let i = 0; i < products.data.length; i++) {
         const product = products.data[i];
         for (let j = 0; j < product.variants.length; j++) {
@@ -16,9 +16,7 @@ function getProduct (productId) {
     }
 }
 
-
-function Color ({value, image_groups}) {
-    console.log(image_groups, value);
+function Color({value, image_groups}) {
     const {link, alt, title} = image_groups
         .filter(({view_type, variation_value}) => view_type === "swatch" && variation_value === value)[0].images[0];
     return (
@@ -26,7 +24,7 @@ function Color ({value, image_groups}) {
     )
 }
 
-function Size ({name, value}) {
+function Size({name, value}) {
     return (
         <div>{name}</div>
     )
@@ -37,7 +35,7 @@ function App() {
 
     const [choosenProduct, setChoosenProduct] = useState(null);
     const [variationValue, setVariationValue] = useState('');
-    // const choosenProductObj = useProduct(choosenProduct)
+    const [image, setImage] = useState(0);
 
     const setCurrentProduct = (productId) => {
         const newChoosenProduct = getProduct(productId);
@@ -46,6 +44,8 @@ function App() {
         setVariationValue(newChoosenProduct.image_groups.filter(({view_type}) => view_type === 'hi-res')[0].variation_value);
     };
 
+    // onClick={() => setChoosenProduct(null)}
+
     return (
         <div className="App">
             <h1>We recommend</h1>
@@ -53,51 +53,54 @@ function App() {
                 <div key={i} onClick={() => setCurrentProduct(product.product_id)}>
                     <img src={product.image.link} alt={product.image.alt} title={product.image.title}/>
                     <p>{product.product_name}</p>
-                    <p>£ {product.price}</p>
+                    <p>{product.currency.replace(product.currency, '\u00A3')}<span>{product.price}</span></p>
                 </div>
             ) : '')}
-            {choosenProduct !== null ?
-                <div className='modal' onClick={() => setChoosenProduct(null)}>
-                    <h1>{choosenProduct.name}</h1>
-                    <p>{choosenProduct.currency} <span>{choosenProduct.price}</span></p>
-                    <div>
-                        {choosenProduct.variation_attributes.map(({id, name, values}) => (
-                            <div>
-                                <div>{values.map(({name, value}) => {
-                                        if (id === 'color') {
-                                            return <Color value={value} image_groups={choosenProduct.image_groups}/>
-                                        } else if (id === 'size') {
-                                            return <Size name={name}/>
-                                        } else {
-                                            return '';
-                                        }
-                                    }
-                                )}</div>
-                            </div>
-                        ))}
-                        {choosenProduct.variation_attributes.filter(({id}) => id === 'color').map((color) => {
-                            return ''
-                        })}
-                        {/*{choosenProductObj.variation_attributes[0].values.map((color) => {*/}
-                        {/*    return (*/}
-                        {/*        <div>*/}
-                        {/*            {color.value}*/}
-                        {/*            {choosenProductObj.image_groups[1].variation_value}*/}
-                        {/*            <img src={choosenProductObj.image_groups[1].images[0].link} />*/}
-                        {/*        </div>*/}
-                        {/*    )*/}
-                        {/*})}*/}
-                        {/*{choosenProductObj.variation_attributes[1].values.map((size) => {*/}
-                        {/*    return (*/}
-                        {/*        <div>*/}
-                        {/*            {size.name}*/}
-                        {/*        </div>*/}
-                        {/*    )*/}
-                        {/*})}*/}
+            {choosenProduct ?
+                <div className='modal'>
+                    <div className="carousel-container">
+                        <button onClick={() =>
+                            setImage(image ===0 ? choosenProduct.image_groups[0].images.length-1 : image - 1)}
+                                className="left-button">
+                            &lt;
+                        </button>
+                        <div className="carousel" style={{"marginLeft": `${-image * 50}vw`}}>
+                            {choosenProduct.image_groups[0].images.map(image => {
+                                return (
+                                    <div className="carouselContent">
+                                        <img src={image.link} alt={image.alt} className='modal-img'/>
+                                    </div>
+                                )
+                            })
+                            }
+                        </div>
+                        <button onClick={() =>
+                            setImage(image === choosenProduct.image_groups[0].images.length-1 ? 0 :image + 1)}
+                                className="right-button">
+                            &gt;
+                        </button>
                     </div>
-                    {choosenProduct.image_groups[0].images.map(image => {
-                        return (<img src={image.link} className='modal-img' alt={image.alt}/>)
-                    })}
+                    <div className='modal-description'>
+                        <h1>{choosenProduct.name}</h1>
+                        <p>{choosenProduct.currency.replace(choosenProduct.currency, '\u00A3')}
+                            <span>{choosenProduct.variants[0].price}</span></p>
+                        <div>
+                            {choosenProduct.variation_attributes.map(({id, name, values}) => (
+                                <div>
+                                    <div>{values.map(({name, value}) => {
+                                            if (id === 'color') {
+                                                return <Color value={value} image_groups={choosenProduct.image_groups}/>
+                                            } else if (id === 'size') {
+                                                return <Size name={name}/>
+                                            } else {
+                                                return '';
+                                            }
+                                        }
+                                    )}</div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
                 </div> : ''}
         </div>
     );

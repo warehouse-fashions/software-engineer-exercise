@@ -1,3 +1,7 @@
+## Software Engineer Exercise
+
+This project has basic required functionality - contain recommended products and modal with images carousel. The project wasn't complete when creating this PR.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

@@ -44,7 +44,6 @@ function App() {
         setVariationValue(newChoosenProduct.image_groups.filter(({view_type}) => view_type === 'hi-res')[0].variation_value);
     };
 
-    // onClick={() => setChoosenProduct(null)}
 
     return (
         <div className="App">
@@ -57,26 +56,27 @@ function App() {
                 </div>
             ) : '')}
             {choosenProduct ?
-                <div className='modal'>
+                <div className='modal' onClick={() => setChoosenProduct(null)}>
                     <div className="carousel-container">
-                        <button onClick={() =>
-                            setImage(image ===0 ? choosenProduct.image_groups[0].images.length-1 : image - 1)}
-                                className="left-button">
+                        <button onClick={(e) => {
+                            e.preventDefault();
+                            setImage(image === 0 ? choosenProduct.image_groups[0].images.length - 1 : image - 1)
+                        }} className="left-button">
                             &lt;
                         </button>
                         <div className="carousel" style={{"marginLeft": `${-image * 50}vw`}}>
-                            {choosenProduct.image_groups[0].images.map(image => {
+                            {choosenProduct.image_groups[0].images.slice(1).map(image => {
                                 return (
                                     <div className="carouselContent">
                                         <img src={image.link} alt={image.alt} className='modal-img'/>
-                                    </div>
-                                )
-                            })
+                                    </div> )})
                             }
                         </div>
-                        <button onClick={() =>
-                            setImage(image === choosenProduct.image_groups[0].images.length-1 ? 0 :image + 1)}
-                                className="right-button">
+                        <button onClick={(e) =>
+                        {
+                            e.preventDefault();
+                            setImage(image === choosenProduct.image_groups[0].images.length - 1 ? 0 : image + 1)}
+                        } className="right-button">
                             &gt;
                         </button>
                     </div>

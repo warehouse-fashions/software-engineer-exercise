@@ -1,11 +1,38 @@
-.App {
+@import "reset.css";
+
+h1 {
+  font-size: 2em;
+  line-height: 1.25;
+  margin: 1.5rem 0 1.5rem 0;
+  color: #0F0E0E;
+}
+
+p {
+  font-size: 1.2em;
+  line-height: 1.75;
+}
+
+.recommended-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.recommended-image {
+  width: 25vw;
+  height: auto;
+}
+
+.recommended-name {
   text-align: center;
+  width: 25vw;
 }
 
 .modal {
   position: fixed;
-  width: 100vw;
-  height: 100vh;
+  width: auto;
+  height: 70vh;
+  margin: auto;
   background-color: rgba(255,255,255,.5);
   top: 0;
   left: 0;
@@ -14,14 +41,13 @@
 }
 
 .modal-img {
-  width: 200px;
-  height: 200px;
+  width: 50vw;
+  height: auto;
 }
 
 .carousel-container {
   width: 50vw;
-  height: 200px;
-  margin: auto;
+  margin: auto 0 auto auto;
   display: flex;
   position: relative;
   overflow: hidden;
@@ -44,10 +70,26 @@
   transition: all .5s;
   flex-grow: 1;
   display: flex;
-  height: 100%;
 }
 
 .carouselContent {
   width: 50vw;
-  height: 200px;
+}
+
+.modal-description {
+  display: flex;
+  flex-direction: column;
+  margin: auto auto auto 0;
+  background-color: white;
+  padding: 2vw;
+}
+.modal-description > p {
+  text-align: left;
+}
+
+.modal-size {
+  display: flex;
+}
+.modal-size-individual {
+  padding: 1vw;
 }

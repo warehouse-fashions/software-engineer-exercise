@@ -1,24 +1,9 @@
-@import "reset.css";
-
-h1 {
-  font-size: 2em;
-  line-height: 1.25;
-  margin: 1.5rem 0 1.5rem 0;
-  color: #0F0E0E;
-}
-
-p {
-  font-size: 1.2em;
-  line-height: 1.75;
-}
-
-.recommended-container {
+.app {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
 }
 
-.recommended-name {
+.app > h1 {
+  margin: 1em 0;
   text-align: center;
-  width: 25vw;
 }

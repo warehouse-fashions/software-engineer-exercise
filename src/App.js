@@ -17,12 +17,12 @@ function App() {
     };
 
     return (
-        <div>
+        <div className="app">
             <h1>We recommend</h1>
             <div className='recommended-container'>
-                {recommendations.hits.map((product, i) => product.image ? (
-                    <ProductListItem key={i} onClick={() => setCurrentProduct(product.product_id)} product={product}/>
-                ) : '')}
+            {recommendations.hits.map((product, i) => product.image ? (
+                <ProductListItem key={i} onClick={() => setCurrentProduct(product.product_id)} product={product}/>
+            ) : '')}
             </div>
             {choosenProduct ? <Modal onClose={() => setChoosenProduct(null)} product={choosenProduct} /> : ''}
         </div>

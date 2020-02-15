@@ -1,7 +1,7 @@
 export function getImagesForColor(product, color) {
     return product.image_groups
                   .filter(({variation_value, view_type}) =>
-                      view_type === 'hi-res' && variation_value === color)[0].images.slice(1)
+                      view_type === 'hi-res' && variation_value === color)[0].images
 }
 
 export function getCurrentPrice(product, color, size) {

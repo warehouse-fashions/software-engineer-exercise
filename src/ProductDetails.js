@@ -14,7 +14,7 @@ const VARIANT_COMPONENTS = {
 export function ProductDetails({product}) {
     const [color, setColor] = useState(product.image_groups.filter(({view_type}) => view_type === 'hi-res')[0].variation_value);
     const [size, setSize] = useState('');
-    const currentImages = getImagesForColor(product, color);
+    const currentImages = getImagesForColor(product, color).slice(1);
     const price = getCurrentPrice(product, color, size);
     const isSelected = (id, value) => id === 'color'? value === color : value === size;
 

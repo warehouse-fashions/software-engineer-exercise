@@ -30,20 +30,20 @@ function Size({name, value}) {
     )
 }
 
+function Carousel({images}) {
 
-function Modal({onClose, product}) {
     const [image, setImage] = useState(0);
 
-    return <div className='modal' onClick={onClose}>
+    return (
         <div className="carousel-container">
             <button onClick={(e) => {
                 e.stopPropagation();
-                setImage(image === 0 ? product.image_groups[0].images.length-2 : image - 1)
+                setImage(image === 0 ? images.length-1 : image - 1)
             }} className="left-button">
                 &lt;
             </button>
             <div className="carousel" style={{"marginLeft": `${-image * 50}vw`}}>
-                {product.image_groups[0].images.slice(1).map((image, i) => {
+                {images.map((image, i) => {
                     return (
                         <div className="carouselContent" key={i}>
                             <img src={image.link} alt={image.alt} className='modal-img'/>
@@ -53,12 +53,16 @@ function Modal({onClose, product}) {
             </div>
             <button onClick={(e) => {
                 e.stopPropagation();
-                setImage(image === product.image_groups[0].images.length-2 ? 0 : image + 1)
-            }
-            } className="right-button">
+                setImage(image === images.length-1 ? 0 : image + 1)}} className="right-button">
                 &gt;
             </button>
         </div>
+    )
+}
+
+function Modal({onClose, product}) {
+    return <div className='modal' onClick={onClose}>
+        <Carousel images={product.image_groups[0].images.slice(1)}/>
         <div className='modal-description'>
             <h1>{product.name}</h1>
             <p>{product.currency.replace(product.currency, '\u00A3')}

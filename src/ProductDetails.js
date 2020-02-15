@@ -3,23 +3,25 @@ import {Size} from "./Size";
 import {Carousel} from "./Carousel";
 import React, {useState} from "react";
 import './ProductDetails.css'
+import {getCurrentPrice, getImagesForColor} from "./helpers";
 
 const VARIANT_COMPONENTS = {
-    'color': Color,
-    'size': Size
+    color: Color,
+    size: Size
 };
 
 
 export function ProductDetails({product}) {
-
     const [color, setColor] = useState(product.image_groups.filter(({view_type}) => view_type === 'hi-res')[0].variation_value);
     const [size, setSize] = useState('');
-    const currentImages = product.image_groups
-                                 .filter(({variation_value, view_type}) =>
-                                     view_type === 'hi-res' && variation_value === color)[0].images.slice(1);
-    const variantWithColor = product.variants.filter(({variation_values}) => color === variation_values.color);
-    const variantWithSize = size ? variantWithColor.filter(({variation_values}) => size === variation_values.size) : variantWithColor;
+    const currentImages = getImagesForColor(product, color);
+    const price = getCurrentPrice(product, color, size);
     const isSelected = (id, value) => id === 'color'? value === color : value === size;
+
+    const setters = {
+        color: setColor,
+        size: setSize
+    };
 
     return (
         <div className='product-details'>
@@ -29,7 +31,7 @@ export function ProductDetails({product}) {
             <div className='description'>
                 <h1>{product.name}</h1>
                 <p>{product.currency.replace(product.currency, '\u00A3')}
-                    <span>{variantWithSize[0].price}</span></p>
+                    <span>{price}</span></p>
                 {product.variation_attributes.map(({id, values}) => (
                     <div key={id} className={`variants variants-${id}`}>
                         {values.map((props) => {
@@ -41,11 +43,7 @@ export function ProductDetails({product}) {
                                 image_groups={product.image_groups}
                                 onClick={(e) => {
                                     e.stopPropagation();
-                                    if (id === 'color') {
-                                        setColor(props.value)
-                                    } else {
-                                        setSize(props.value)
-                                    }
+                                    setters[id](props.value);
                                 }}/>
                         })}
                     </div>

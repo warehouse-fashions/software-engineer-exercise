@@ -6,6 +6,10 @@
     align-items: center;
 }
 
+.size.selected {
+    border-color: black;
+}
+
 .size > * {
     width: 100%;
 }

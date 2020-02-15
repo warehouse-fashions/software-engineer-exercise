@@ -5,6 +5,10 @@
     display: flex;
 }
 
+.color.selected {
+    border-color: black;
+}
+
 .color img {
     width: 100%;
 }

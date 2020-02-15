@@ -14,8 +14,8 @@ export function Carousel({images}) {
                     &lt;
                 </button>
                 <div className="carousel-widget" style={{"marginLeft": `${-image * 100}%`}}>
-                    {images.map((image, i) => <div className="carousel-item">
-                            <img src={image.link} alt={image.alt} key={i}/>
+                    {images.map((image, i) => <div className="carousel-item" key={i}>
+                            <img src={image.link} alt={image.alt}/>
                         </div>
                     )}
                 </div>

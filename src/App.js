@@ -8,13 +8,11 @@ import {ProductDetails} from "./ProductDetails";
 
 function App() {
     const [choosenProduct, setChoosenProduct] = useState(null);
-    const [variationValue, setVariationValue] = useState('');
 
     const recommendations = getRecommendations();
     const setCurrentProduct = (productId) => {
         const newChoosenProduct = getProduct(productId);
         setChoosenProduct(newChoosenProduct);
-        setVariationValue(newChoosenProduct.image_groups.filter(({view_type}) => view_type === 'hi-res')[0].variation_value);
     };
 
     return (

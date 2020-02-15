@@ -10,10 +10,10 @@ img {
 }
 
 body {
-  /* display: flex; */
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* padding: 10px; */
 }
 
 h1 {
@@ -56,4 +56,27 @@ img{
 
 h2 {
 margin: 10px;
+}
+
+.modal {
+  width: 85vw;
+  height: 85vh;
+  background-color: aqua;
+  position: fixed;
+  top: 50%;  
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modal-open {
+  opacity: 0.4;
+}
+
+.swatch {
+  width: 100px;
+  height: 100px;
+}
+
+.hidden {
+  display: none;
 }

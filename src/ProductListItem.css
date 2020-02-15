@@ -1,3 +1,6 @@
+.product-list-item {
+    cursor: pointer;
+}
 .product-list-item > img {
     width: 100%;
 }

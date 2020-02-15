@@ -3,6 +3,7 @@ import './App.css';
 import {Modal} from "./Modal";
 import {ProductListItem} from "./ProductListItem";
 import {getProduct, getRecommendations} from "./api";
+import {ProductDetails} from "./ProductDetails";
 
 
 function App() {
@@ -24,7 +25,10 @@ function App() {
                 <ProductListItem key={i} onClick={() => setCurrentProduct(product.product_id)} product={product}/>
             ) : '')}
             </div>
-            {choosenProduct ? <Modal onClose={() => setChoosenProduct(null)} product={choosenProduct} /> : ''}
+            {choosenProduct ?
+                <Modal onClose={() => setChoosenProduct(null)}  >
+                    <ProductDetails product={choosenProduct} />
+                </Modal>: ''}
         </div>
     );
 }

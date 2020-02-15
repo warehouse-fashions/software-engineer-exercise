@@ -20,39 +20,11 @@
     flex-wrap: nowrap;
 }
 
-.modal .carousel-container {
-    width: 100%;
-}
-
-.modal .description {
-    margin: 1em;
-}
-
-.modal .variants {
-    margin-top: .5em;
-    display: flex;
-}
-.modal .variants-color > * {
-    width: 1.5em;
-    height: 1.5em;
-}
-
-
-.modal .variants-size > * {
-    width: 2em;
-    height: 2em;
-}
 
 @media only screen and (min-width: 600px) {
     .modal .modal-body {
-        flex-direction: row;
         max-width: 900px;
         height: auto;
         margin: auto;
     }
-
-    .modal .carousel-container {
-        width: 50%;
-    }
-
 }

@@ -47,9 +47,7 @@ function Carousel({images}) {
                     return (
                         <div className="carouselContent" key={i}>
                             <img src={image.link} alt={image.alt} className='modal-img'/>
-                        </div>)
-                })
-                }
+                        </div>)})}
             </div>
             <button onClick={(e) => {
                 e.stopPropagation();
@@ -86,6 +84,20 @@ function Modal({onClose, product}) {
     </div>
 }
 
+function ProductListItem({onClick, product}) {
+    return (
+        <div onClick={onClick}>
+            <img src={product.image.link} alt={product.image.alt} title={product.image.title}
+                 className='recommended-image'/>
+            <p className='recommended-name'>{product.product_name}</p>
+            <p style={{"textAlign": "center"}}>
+                {product.currency.replace(product.currency, '\u00A3')}
+                <span>{product.price}</span>
+            </p>
+        </div>
+    )
+}
+
 function App() {
 
     const [choosenProduct, setChoosenProduct] = useState(null);
@@ -103,15 +115,7 @@ function App() {
             <h1>We recommend</h1>
             <div className='recommended-container'>
                 {recommendations.hits.map((product, i) => product.image ? (
-                    <div key={i} onClick={() => setCurrentProduct(product.product_id)}>
-                        <img src={product.image.link} alt={product.image.alt} title={product.image.title}
-                             className='recommended-image'/>
-                        <p className='recommended-name'>{product.product_name}</p>
-                        <p style={{"textAlign": "center"}}>
-                            {product.currency.replace(product.currency, '\u00A3')}
-                            <span>{product.price}</span>
-                        </p>
-                    </div>
+                    <ProductListItem key={i} onClick={() => setCurrentProduct(product.product_id)} product={product}/>
                 ) : '')}
             </div>
             {choosenProduct ? <Modal onClose={() => setChoosenProduct(null)} product={choosenProduct} /> : ''}

@@ -6,7 +6,6 @@ import {getProduct, getRecommendations} from "./api";
 
 
 function App() {
-
     const [choosenProduct, setChoosenProduct] = useState(null);
     const [variationValue, setVariationValue] = useState('');
 

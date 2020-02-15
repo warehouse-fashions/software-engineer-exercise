@@ -1,0 +1,35 @@
+.modal {
+    position: fixed;
+    width: auto;
+    height: 70vh;
+    margin: auto;
+    background-color: rgba(255,255,255,.5);
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.modal-img {
+    width: 50vw;
+    height: auto;
+}
+
+
+.modal-description {
+    display: flex;
+    flex-direction: column;
+    margin: auto auto auto 0;
+    background-color: white;
+    padding: 2vw;
+}
+.modal-description > p {
+    text-align: left;
+}
+
+.modal-size {
+    display: flex;
+}
+.modal-size-individual {
+    padding: 1vw;
+}

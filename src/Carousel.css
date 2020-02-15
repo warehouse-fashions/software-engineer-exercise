@@ -1,0 +1,30 @@
+.carousel-container {
+    width: 50vw;
+    margin: auto 0 auto auto;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-container .left-button {
+    position: absolute;
+    bottom: 0;
+    top: 0;
+}
+
+.carousel-container .right-button {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    top: 0;
+}
+
+.carousel {
+    transition: all .5s;
+    flex-grow: 1;
+    display: flex;
+}
+
+.carouselContent {
+    width: 50vw;
+}

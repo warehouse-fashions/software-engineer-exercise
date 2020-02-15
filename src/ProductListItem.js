@@ -1,4 +1,5 @@
 import React from "react";
+import "./ProductListItem.css";
 
 export function ProductListItem({onClick, product}) {
     return (

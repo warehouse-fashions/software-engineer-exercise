@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import "./Carousel.css";
 
 export function Carousel({images}) {
     const [image, setImage] = useState(0);

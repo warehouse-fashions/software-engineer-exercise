@@ -2,6 +2,7 @@ import React from "react";
 import {Carousel} from "./Carousel";
 import {Color} from "./Color";
 import {Size} from "./Size";
+import "./Modal.css";
 
 export function Modal({onClose, product}) {
     console.log(product.variation_attributes);

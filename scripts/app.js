@@ -112,37 +112,39 @@ function init () {
     header.classList.add('modal-open')
     modal.innerHTML = 
       `
-      <div>${product.data.map((item, i) => 
+      <div class="modal-data">${product.data.map((item, i) => 
     i.toString() === event.target.id ?
-      `<h4>
+      `
+      <div class="carousel-left">
+      <button id="left-button" class="carousel-button"> < </button>
+      <img id="${i}" class="image-carousel" src=${item.image_groups[0].images[0].link} />
+      <button id="right-button" class="carousel-button"> > </button>
+      </div>
+      <div class="carousel-right">
+      <div class="carousel-header">
+      <h4 class="carousel-name">
       ${item.name}
       </h4>
-      <div>
-      <button id="left-button" class="carousel-button">left arrow </button>
-      <img id="${i}" class="image-carousel" src=${item.image_groups[0].images[0].link} />
-      <button id="right-button" class="carousel-button">right arrow</button>
-      </div>
-      <div>
       <button class="close-modal">X</button>
       </div>
-      <div>
-      <img class="swatch" src=${item.image_groups[1].view_type === 'swatch' ? 
-    item.image_groups[1].images.map(swatch => swatch.link) : 
-    item.image_groups[2].images.map(swatch => swatch.link)} />
-      </div>
-      <div>
-      Sizes available
-      <p>
-      ${item.variation_attributes[1].values.map(val => val.name).join(' ')}
-      </p>
-      </div>
-      <div>
+      <div class="modal-price">
       ${recommendations.hits.map((rec, i) => i.toString() === event.target.id ?
     `
     £${rec.price}.00
     `
     : '').join('')}
       </div>
+      <div class="modal-swatch">
+      <img class="swatch" src=${item.image_groups[1].view_type === 'swatch' ? 
+    item.image_groups[1].images.map(swatch => swatch.link) : 
+    item.image_groups[2].images.map(swatch => swatch.link)} />
+      </div>
+      <div class="modal-sizes">
+      ${item.variation_attributes[1].values.map(val => 
+    `<p>${val.name}</p>`
+  ).join(' ')}
+      </div>
+      </div>  
       `
 
       : '').join('')}
@@ -157,7 +159,7 @@ function init () {
     handleCloseModal(closeModalButton)
     // }
   }
-  // activating the close modal button
+  // activating the close modal 
   function handleCloseModal(closeModalButton) {
     closeModalButton.addEventListener('click', closeModal)
   }

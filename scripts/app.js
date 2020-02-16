@@ -39,7 +39,6 @@ function init () {
 
   // Mapping the items to the page using the data from products and recommendations 
   function mapItems(product, recommendations) {
-    console.log(recommendations.hits)
     app.innerHTML = recommendations.hits.map((elem, i) => 
       `
     <div id=${i} class="items">
@@ -141,8 +140,7 @@ function init () {
       </div>
       <div class="modal-sizes">
       ${item.variation_attributes[1].values.map(val => 
-    `<p>${val.name}</p>`
-  ).join(' ')}
+    `<p>${val.name}</p>`).join(' ')}
       </div>
       </div>  
       `

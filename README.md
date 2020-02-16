@@ -10,7 +10,7 @@ Use the clone button to download the source code. Enter the following commands i
 
 <-- To run the server --> $ http-server
 
-<-- Then navigate to http://localhost:8080/ -->
+<-- Then navigate to http://localhost:8080/ in your browser -->
 
 ## Technologies Used
 
@@ -26,27 +26,25 @@ I decided to make the component in pure JavaScript because I wanted to improve m
 
 The first challenge was importing the JSON files into my app.js file - I have done this by installing a http server so that I could do a fetch request to the JSON file.
 
-The next biggest challenge was in navigating the JSON files which contain a large amount of multi-layered data with some inconsistencies. I overcame some of these issues by doing a check on both files - for example when displaying an image I would check the recommendations file for an image, and then if there was not one there then I would use one from the producs file instead: 
-
-```
+The next biggest challenge was in navigating the JSON files which contain a large amount of multi-layered data with some inconsistencies. I overcame some of these issues by doing a check on both files - for example when displaying an image I would check the recommendations file for an image, and then if there was not one there then I would use one from the products file instead: 
+    
+    
     app.innerHTML = recommendations.hits.map((elem, i) => 
-      `
+      
     <div id=${i} class="items">
       ${product.data.map(item => item.name === elem.product_name ? 
-    `
+    
       <img id=${i} src=${elem.image ? elem.image.link : item.image_groups[0].images[0].link}
-    ` : '').join('')}
+    : '').join('')}
       <div> 
         <h2>${elem.image ? elem.image.title : elem.product_name}</h2>
         <p>£${elem.price}.00</p>
       </div>
     </div>
-    `, ).join('')
+    , ).join('')
 
-    ```
 
-    The modal was also an interesting challenge because I needed to target each item by its index and then target the index of each image within the image array of each item. I was happy with the function I wrote which deals with both the forward and back arrows that the user is able to click on:
-
+   The modal was also an interesting challenge because I needed to target each item by its index and then target the index of each image within the image array of each item. I was happy with the function I wrote which deals with both the forward and back arrows that the user is able to click on:
 
 ```
     function updateImage(product, recommendations, carouselButtons, carouselImage) {
@@ -81,6 +79,7 @@ The next biggest challenge was in navigating the JSON files which contain a larg
 
     }))
   }
+
 ```
 
-Design-wise, I stuck to a simple and clean design, attempting to copy the example given. As a future improvement, I think I could add some simple transitions or animations to the images on the modal. 
+Design-wise, I stuck to a simple and clean design, attempting to copy the example given. As a future improvement, I think I could add some simple transition animations to the images on the modal. 

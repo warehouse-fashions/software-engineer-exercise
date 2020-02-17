@@ -1,0 +1,15 @@
+.color {
+    margin-right: 3px;
+    padding: 3px;
+    border: 1px solid #c0c0c0;
+    display: flex;
+    cursor: pointer;
+}
+
+.color.selected {
+    border-color: black;
+}
+
+.color img {
+    width: 100%;
+}

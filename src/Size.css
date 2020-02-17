@@ -1,0 +1,16 @@
+.size {
+    margin-right: 3px;
+    display: flex;
+    border: 1px solid #c0c0c0;
+    text-align: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.size.selected {
+    border-color: black;
+}
+
+.size > * {
+    width: 100%;
+}

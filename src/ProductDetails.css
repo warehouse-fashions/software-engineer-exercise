@@ -1,0 +1,36 @@
+.product-details {
+    width: 100%;
+}
+
+.product-details .carousel-container {
+    width: 100%;
+}
+
+.product-details .description {
+    margin: 1em;
+}
+
+.product-details .variants {
+    margin-top: .5em;
+    display: flex;
+}
+.product-details .variants-color > * {
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.product-details .variants-size > * {
+    width: 2em;
+    height: 2em;
+}
+
+@media only screen and (min-width: 600px) {
+    .product-details {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .product-details .carousel-container {
+        width: 50%;
+    }
+}

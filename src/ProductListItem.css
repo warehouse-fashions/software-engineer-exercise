@@ -1,0 +1,14 @@
+.product-list-item {
+    cursor: pointer;
+}
+.product-list-item > img {
+    width: 100%;
+}
+
+.product-list-item > p {
+    text-align: center;
+}
+
+.product-list-item .product-name {
+    font-weight: bold;
+}

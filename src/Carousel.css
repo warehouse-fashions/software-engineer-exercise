@@ -1,0 +1,54 @@
+.carousel {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
+.carousel:before{
+    content: "";
+    display: block;
+    padding-top: 100%;
+}
+
+.carousel-inner {
+    position:  absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.carousel .carousel-widget {
+    height: 100%;
+    width: 100%;
+    transition: all .5s;
+    white-space: nowrap;
+}
+
+.carousel .left-button {
+    position: absolute;
+    bottom: 0;
+    top: 0;
+}
+
+.carousel .right-button {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    top: 0;
+}
+
+.carousel .carousel-item {
+    height: 100%;
+    display: inline-block;
+}
+
+.carousel .carousel-item img {
+    height: 100%;
+    width: 100%;
+}
+
+.carousel button {
+    border: 0;
+    background: none;
+}

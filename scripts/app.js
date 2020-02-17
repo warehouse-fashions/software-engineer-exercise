@@ -83,10 +83,11 @@ function init () {
     carouselButtons.forEach(button => button.addEventListener('click', function() {
       if (event.target.id === 'right-button') {
 
-        // target the length of the array of images on each item by using the id of each array of images
+        // target the length of the array of images on each item through the index of the item 
+        // ie.([image array] on item [20])
         if (j < image[carouselImage.id].length - 1) {
           j++
-          // replace the image source with the next image in the array of images as the user clicks through
+          // update the image source with the next image link in the array of images as the user clicks through
           carouselImage.src = image[carouselImage.id][j].link
         }
       }

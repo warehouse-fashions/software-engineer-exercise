@@ -133,7 +133,7 @@ $breakpoints: (
         justify-content: center;
         .modal-img {
           max-width: 440px;
-          max-height:440px
+          max-height:440px;
           position: relative;
           top: 40px;
           @include min(sm) {

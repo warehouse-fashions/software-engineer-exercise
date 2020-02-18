@@ -1,0 +1,235 @@
+//vars
+$spacer: 8px;
+//breakpoints
+$breakpoints: (
+  "sm": 540px,
+  "md": 720px,
+  "lg": 1140px
+);
+
+// breakpoint mixin
+@mixin min($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: #{map-get($breakpoints, $breakpoint)}) {
+      @content;
+    }
+  }
+}
+
+// carousel buttons
+.slick-prev,
+.slick-next {
+  color: white;
+  z-index: 2;
+  padding: 10px;
+  background-color: rgb(173, 75, 75);
+  &:hover {
+    color: white;
+    z-index: 2;
+    padding: 10px;
+    background-color: rgb(173, 75, 75);
+  }
+}
+
+// main product carousel
+.carousel-container {
+  font-family: "Bebas Neue", cursive;
+  max-width: 1200px;
+  padding: 0 40px;
+  margin: 10px auto;
+  * {
+    outline: none !important;
+  }
+  h1 {
+    font-weight: normal;
+    font-variant-caps: all-petite-caps;
+    text-align: center;
+  }
+  .product-item-container {
+    justify-content: center;
+    text-align: center;
+    margin: 0 ($spacer * 3);
+    .product-img {
+      height: 375px;
+      padding: 20px 20px;
+      transition: all 0.2s ease-in-out;
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+    .product-title-container {
+      background: rgb(173, 75, 75);
+      position: relative;
+      padding: $spacer * 2;
+      h3 {
+        color: rgba(255, 255, 255, 1);
+        margin: auto;
+        font-weight: 500;
+      }
+      h4.product-price {
+        font-family: "Roboto Mono", monospace;
+        color: rgb(255, 255, 255);
+        font-weight: 100;
+        margin: 0;
+      }
+    }
+  }
+}
+
+// modal styling
+.product-modal {
+  & > [tabindex="-1"] {
+    display: flex !important;
+    height: 100% !important;
+  }
+}
+.modal-card {
+  display: flex;
+  position: relative;
+  overflow-y: auto;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  margin: auto;
+  background-color: rgb(255, 255, 255);
+  @include min(sm) {
+    flex-direction: row;
+    max-width: 800px;
+    height: 650px;
+    overflow: hidden;
+  }
+  .modal-close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 30;
+    border: black 1px solid;
+    cursor: pointer;
+  }
+  .modal-carousel {
+    width: 100%;
+    @include min(sm) {
+      width: 50%;
+      height: 100%;
+    }
+    .slick-prev,
+    .slick-prev:hover {
+      left: 0;
+      background: none;
+    }
+    .slick-next,
+    .slick-next:hover {
+      right: 0;
+      background: none;
+    }
+    .modal-img-outer-container {
+      transform: scale(1.25);
+      @include min(sm) {
+        transform: scale(1.05);
+      }
+      .modal-img-inner-container {
+        display: flex;
+        overflow: hidden;
+        justify-content: center;
+        .modal-img {
+          max-width: 440px;
+          max-height:440px;
+          position: relative;
+          top: 40px;
+          @include min(sm) {
+            position: static;
+            max-width: 650px;
+            max-height:650px;
+          }
+        }
+      }
+    }
+  }
+  .modal-description-container {
+    margin: 20px;
+    @include min(sm) {
+      position: relative;
+      width: 100%;
+    }
+    .modal-title-container {
+      .modal-title {
+        font-family: "Bebas Neue", cursive;
+        margin-bottom: $spacer;
+      }
+      span {
+        font-family: "Roboto Mono";
+      }
+    }
+    .modal-colour-container {
+      margin-bottom: $spacer * 3;
+      h2 {
+        margin-bottom: $spacer;
+      }
+      .modal-colour-img-group {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        img {
+          border: 1px solid gainsboro;
+          flex-grow: 0;
+          padding: $spacer;
+          margin: 0 2px;
+          text-align: center;
+          padding: 4px;
+          width: 25px;
+          height: 25px;
+        }
+      }
+    }
+    .modal-size-container {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      > div {
+        border: 1px solid gainsboro;
+        flex-basis: 20px;
+        flex-grow: 0;
+        padding: $spacer;
+        text-align: center;
+        margin: 2px;
+      }
+    }
+    .product-description-container {
+      position: absolute;
+      bottom: 0;
+      .product-description {
+        display: none;
+        @include min(sm) {
+          font-size: 1.1rem;
+          margin-top: auto;
+          margin: 30px;
+          position: relative;
+          font-family: "Roboto Mono";
+          display: block;
+        }
+        &::after {
+          content: "\201D";
+          font-size: 5.5rem;
+          position: absolute;
+          font-family: "Roboto Mono";
+          color: #908f8f91;
+          bottom: -80px;
+          right: 0;
+        }
+        &::before {
+          content: "\201C";
+          font-size: 5.5rem;
+          position: absolute;
+          font-family: "Roboto Mono";
+          color: #908f8f91;
+          top: -40px;
+          left: -40px;
+        }
+      }
+    }
+  }
+}
+
+.slick-slide {
+  overflow: hidden;
+}

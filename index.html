@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> WAREHOUSE - Recommendations </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/myStyle.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>    
+</head>
+<body>    
+    <div id="my-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-body">
+                <span class="close">&times;</span>
+                <div class="row">
+                    <div class="column">
+                        <div class="slideshow-container">Product Images</div>
+                    </div>
+                    <div id="legend" class="column">
+                        <h4 id="pname">Name</h4>
+                        <p id="pprice">Price</p>
+                        <div id="variation-container"></div>     
+                        <br>
+                        <div id="size-container" class="grid"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+    <section id="boxes">            
+        <h3>WE RECOMMEND</h3>  
+        <div id="recommend_container" class="container"></div>                       
+    </section>    
+</body>
+    <script  src="js/main.js"></script>
+    <script src="js/modal.js"></script> 
+</html>

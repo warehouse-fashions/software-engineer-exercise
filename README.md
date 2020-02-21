@@ -12,11 +12,24 @@ Please fork this repository and commit your changes for review.
 
 Amend this Readme in your forked repo and use your commits to outline the component you have created and the decisions that you have made, including any information required for how to run your component. When complete please raise a Pull Request back into master branch for review.
 
-# Tasks done by IJSATAR
+## Tasks done by IJSATAR
 files created:
 * index.html
 * js/main.js
 * js/modal/js
 * css/myStyle.css
+
+Please download brackets and open files as stated above.
+Run index.html in live preview mode
+
+### Know issues.
+* The 4 random products on the recommendations page can be repeated.
+* when clicking on a recommended item, the slideshow can sometimes be empty due to a default setting error.
+* products with colour variations are wrongly displayed in the modal popup
+
+
+
+
+
 
 

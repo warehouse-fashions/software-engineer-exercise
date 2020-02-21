@@ -168,26 +168,6 @@ img {vertical-align: middle;}
     color: white;
 }
 
-/* Caption text */
-.text {
-  color: #f2f2f2;
-  font-size: 15px;
-  padding: 8px 12px;
-  position: absolute;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
-}
-
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-}
-
 /* Fading animation */
 .fade {
   -webkit-animation-name: fade;
@@ -220,17 +200,37 @@ img {vertical-align: middle;}
   text-align: center;
 }
 
-@media (max-width: 1024px){ 
+@media (max-width: 768px){ 
+    body { display:block}
+    
    .prev, .next,.text, .item {font-size: 11px}
 
     #boxes .box{
         float: none;
         text-align: center;
         width: 100%;
-    }    
+    }
     
-  .column {
-    width: 100%;
-  }    
+    .v { width:50%; padding: 4px; border:1px solid}
+
+    .column {
+        width: 100%;
+    }   
+
+    .close { font-size: 20px}
+    
+    .grid {
+      display: grid;
+      width: 1%;
+      grid-template-columns: repeat(7, 1fr);
+      grid-column-gap: 4px;    
+    }
+
+    .item {
+      border: 1px solid black;
+      padding: 4px;
+        font-weight: bold;
+      text-align: center;
+    }    
        
 }

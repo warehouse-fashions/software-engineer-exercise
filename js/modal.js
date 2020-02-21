@@ -35,11 +35,12 @@ function showProduct(productid, prodid) {
         success: function(data) {
            $(data.data).each(function(index,value) {  
                let pid = productid.substr(0,6);
-               let variant = prodid;
-               
-               if (pid === value.id) {    
+               let variant = prodid;               
+               if (value.id === pid) {
+                   
                        $(value.variants).each(function(i,v) {   
                             if (v.product_id === variant) {                        
+                                    console.log(pid, productid,v);
 
                         $(value.image_groups[0]).each(function(idx,val) {  
                        $(val.images).each(function(i,v) {   
@@ -48,7 +49,7 @@ function showProduct(productid, prodid) {
    
                    });             
                                 
-                   
+                   // retrieve images for slideshow
                    $(value.image_groups[0]).each(function(idx,val) {  
                        $(val.images).each(function(i,v) {   
                             $(".slideshow-container").append('<div class="mySlides fade"><img src=' + v.link + ' style="width:100%"></div>'); 
@@ -56,12 +57,14 @@ function showProduct(productid, prodid) {
    
                    });
                    
+                    // retrieve images for variation cplour
                    $(value.image_groups[1]).each(function(idx,val) {  
                        $(val.images).each(function(i,v) {   
                             $("#variation-container").append('<div><img src=' + v.link + ' style="width:12%; padding: 4px; border:1px solid"></div>'); 
                         });          
                    }); 
                    
+                    // retrieve sizes 
                    $(value.variation_attributes[1]).each(function(idx,val) {  
                        $(val.values).each(function(i,v) {  
                            $("#size-container").append('<div class="item">'+v.value+'</div>'); 
@@ -89,6 +92,7 @@ function showProduct(productid, prodid) {
     }); 
 }
 
+// modal slideshow for product
 var slideIndex = 1;
 showSlides(slideIndex);
 

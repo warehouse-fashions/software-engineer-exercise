@@ -1,0 +1,236 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f4f4;
+    font-size: 17px;
+    line-height: 1.6;
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+.container{
+    width: 80%;
+    margin: auto;
+    margin: auto;
+    overflow: hidden;
+}
+
+h3
+{
+    text-align: center
+}
+
+#boxes{
+    margin: 20% auto;
+}
+
+.box{
+    float:  left;
+    text-align: center;
+    width: 25%;
+    padding: 0px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;    
+}
+
+.box img{
+    width: 100%;
+}
+
+.box:hover {
+    opacity: 0.5;
+}
+
+:root {
+  --modal-duration: 1s;
+  --modal-color: #428bca;
+}
+
+.button {
+  background: #428bca;
+  padding: 1em 2em;
+  color: #fff;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: #3876ac;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  margin: 10% auto;
+  width: 60%;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
+}
+
+.modal-body {
+/*  padding: 10px 20px;*/
+  background: #fff;
+}
+
+.close {
+  color: black;
+  float: right;
+  font-size: 30px;
+    padding: 10px;
+}
+
+.close:hover,
+.close:focus {
+  background-color: darkgray;
+    color: white;
+  cursor: pointer;
+}
+
+.column {
+  float: left;
+  width: 50%;
+}
+
+#legend{
+    padding: 20px;
+    margin: 0;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@keyframes modalopen {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+* {box-sizing: border-box}
+body {font-family: Verdana, sans-serif; margin:0}
+.mySlides {display: none}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+/*  max-width: 1000px;*/
+  position: relative;
+  margin: auto;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: black;
+/*  font-weight: bold;*/
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: darkgray;
+    color: white;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+.grid {
+  display: grid;
+  width: 10%;
+  grid-template-columns: repeat(7, 1fr);
+  grid-column-gap: 10px;    
+}
+
+.item {
+  border: 1px solid black;
+  padding: 10px;
+    font-weight: bold;
+  text-align: center;
+}
+
+@media (max-width: 768px){ 
+    body { display:block}
+    
+   .prev, .next,.text, .item {font-size: 11px}
+
+    #boxes .box{
+        float: none;
+        text-align: center;
+        width: 100%;
+    }
+    
+    .v { width:50%; padding: 4px; border:1px solid}
+
+    .column {
+        width: 100%;
+    }   
+
+    .close { font-size: 20px}
+    
+    .grid {
+      display: grid;
+      width: 1%;
+      grid-template-columns: repeat(7, 1fr);
+      grid-column-gap: 4px;    
+    }
+
+    .item {
+      border: 1px solid black;
+      padding: 4px;
+        font-weight: bold;
+      text-align: center;
+    }    
+       
+}

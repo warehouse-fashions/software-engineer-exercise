@@ -1,7 +1,7 @@
 const renderHit = hit => {
   // removes product if no image
   if (!hit.image) {
-      return "";
+      return "test";
   }
 
   let html = '<div class="rec__item">';
@@ -21,13 +21,24 @@ const renderComponent = hits => {
   return html;
 };
 
+const fetchData = async url => {
+    const dataStream = await fetch(url);
+    const data = await dataStream.json();
+    return data;
+}
+
+const findTopHits = hits => {
+    const hitsWithPictures = hits.filter(hit => !!hit.image);
+    const sortedHits = hitsWithPictures.sort((a, b) => b.price - a.price);
+    const topHits = sortedHits.slice(0, 4);
+    return topHits;
+}
+
 const setup = async () => {
-  const dataStream = await fetch("./data/recommendations.json");
-  const { hits } = await dataStream.json();
-  const sortedHits = hits.sort((a, b) => b.price - a.price);
-  const topHits = sortedHits.slice(0, 8);
-  const html = renderComponent(topHits);
-  document.getElementById("app").innerHTML = html;
-};
+    const { hits } = await fetchData('./data/recommendations.json');
+    const topHits = findTopHits(hits);
+    const html = renderComponent(topHits);
+    document.getElementById("app").innerHTML = html;
+}
 
 setup();

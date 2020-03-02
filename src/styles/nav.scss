@@ -43,6 +43,19 @@ nav {
   }
 }
 
+// nav dropdown after hovering
+.nav-dropdown {
+  padding-left: 8px;
+  display: none;
+  // position: absolute;
+  z-index: 2;
+  width: 100vw;
+  min-height: 0px;
+  transition: linear;
+  transition-duration: 2s;
+  background-color: whitesmoke;
+}
+
 
 
 // mobile https://www.warehouse.co.uk/on/demandware.static/Sites-Warehouse-UK-Site/-/default/dw4a46955d/images/mobile_logo.svg

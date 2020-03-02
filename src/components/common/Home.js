@@ -1,28 +1,20 @@
 import React from 'react'
-var jsonData = require('../../../data/product.json')
 
 import NavDropdown from './NavDropdown'
+import Recommend from '../lightbox/Recommend'
 
 export default class Home extends React.Component {
   constructor() {
     super()
-    this.state = {
-      data: null
-    }
+    this.state = {}
     // binds
   }
-  
   // function
-  componentDidMount(){
-    this.setState({ data: jsonData })
-  }
-
   render() {
-    if (!this.state.data) return null
-    console.log('data: ',this.state.data)
     return (
       <div>
         <NavDropdown />
+        <Recommend />
       </div>
     )
   }

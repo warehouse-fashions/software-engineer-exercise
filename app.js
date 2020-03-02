@@ -1,7 +1,7 @@
 const renderHit = hit => {
-  // provide a default image
+  // removes product if no image
   if (!hit.image) {
-      return '';
+      return "";
   }
 
   let html = '<div class="rec__item">';
@@ -24,7 +24,9 @@ const renderComponent = hits => {
 const setup = async () => {
   const dataStream = await fetch("./data/recommendations.json");
   const { hits } = await dataStream.json();
-  const html = renderComponent(hits);
+  const sortedHits = hits.sort((a, b) => b.price - a.price);
+  const topHits = sortedHits.slice(0, 8);
+  const html = renderComponent(topHits);
   document.getElementById("app").innerHTML = html;
 };
 

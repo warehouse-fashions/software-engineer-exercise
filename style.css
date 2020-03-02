@@ -1,7 +1,21 @@
 .item__photo {
-    height: 50px;
+    height: 100%;
+    width: 100%;
 }
 
-.hidden {
+/* .hidden {
     visibility: hidden;
+} */
+
+.rec {
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+    /* height: 10%;
+    overflow: hidden; */
+}
+
+.rec__item {
+    width: 25%;
+    height: 100%;
 }

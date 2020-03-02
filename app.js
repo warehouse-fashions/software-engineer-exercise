@@ -6,13 +6,14 @@ const renderHit = hit => {
 
   let html = '<div class="rec__item">';
   html += `<img class="item__photo" src="${hit.image.link}" alt="${hit.image.alt}"></img>`;
+  html += `<h2>${hit.product_name}</h2>`;
+  html += `<p>£${hit.price}.00</p>`
   html += "</div>";
   return html;
 };
 
 const renderComponent = hits => {
   let html = '<div class="rec">';
-  html += '<h1 class="app-title">WE RECOMMEND</h1>';
   hits.forEach(hit => {
     html += renderHit(hit);
   });

@@ -4,6 +4,7 @@ const ProductCard = ({ hits, showLight }) => {
   return (
     <div className='product-card'>
       <img 
+        name={hits.product_name}
         id={hits.product_id}
         src={hits.image.link}
         className='card-img'

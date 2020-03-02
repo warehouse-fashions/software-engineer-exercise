@@ -10,9 +10,10 @@ export default class Recommend extends React.Component {
   constructor() {
     super()
     this.state = {
-      products: {},
+      products: {}, 
       recommendations: {},
-      hit: ''
+      hit: '', //selected item to display in lightbox
+      data: '' //lightbox data for selected item
     }
     this.showLight = this.showLight.bind(this)
   }
@@ -30,22 +31,23 @@ export default class Recommend extends React.Component {
   }
 
   showLight() {
-    const select = this.state.recommendations.hits.filter(
-      product => product.product_id === event.target.id
-    )
-    console.log('sel hit = ', select[0])
-    this.setState({ hit: select[0] })
-    const lightbox = document.getElementsByClassName('lightbox')[0]
+    console.log('event =',event.target.name) 
+    const data = this.state.products.data.filter(
+      product => product.name === event.target.name)[0]
+      
+    this.setState({ data })
+
+    const lightbox = document.getElementsByClassName('void')[0]
     lightbox.style.display = 'flex'
+    console.log(this.state)
   }
 
   hideLight() {
     if (event.key === 'Escape') {
-      console.log('escape')
-      const lightbox = document.getElementsByClassName('lightbox')[0]
+      const lightbox = document.getElementsByClassName('void')[0]
       lightbox.style.display = 'none'
-    } else if (event.toElement.className === '') {
-      const lightbox = document.getElementsByClassName('lightbox')[0]
+    } else if (event.toElement.className === 'void') {
+      const lightbox = document.getElementsByClassName('void')[0]
       lightbox.style.display = 'none'
     }
   }
@@ -55,7 +57,7 @@ export default class Recommend extends React.Component {
     const hits = this.state.recommendations.hits.filter(product =>
       Object.keys(product).includes('image')
     )
-    console.log('hits', hits)
+    console.log(this.state)
     return (
       <div className='recommend'>
         <h3>We Recommend</h3>
@@ -63,7 +65,9 @@ export default class Recommend extends React.Component {
           {hits.map((elem, index) => (
             <ProductCard key={index} hits={elem} showLight={this.showLight} />
           ))}
-          <Lightbox hits={this.state.hit} />
+          <Lightbox
+            data={this.state.data}
+          />
         </div>
       </div>
     )

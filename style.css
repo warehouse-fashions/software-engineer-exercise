@@ -1,0 +1,7 @@
+.item__photo {
+    height: 50px;
+}
+
+.hidden {
+    visibility: hidden;
+}

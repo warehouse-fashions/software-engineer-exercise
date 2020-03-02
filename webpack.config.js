@@ -30,13 +30,7 @@ module.exports = {
     open: true,
     port: 4000,
     watchContentBase: true,
-    historyApiFallback: true,
-    proxy: {
-      '/api': {
-        target: 'http://localhost:8000',
-        secure: 'false'
-      }
-    }
+    historyApiFallback: true
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),

@@ -36,15 +36,20 @@
   height: 100vh;
 }
 .lightbox {
+  h5 {
+    margin-top: 0px;
+    margin-bottom: 4px;
+    text-align: left;
+  }
   display: flex;
   background: whitesmoke;
   z-index: 9;
   width: 1155px;
-  height: 65vh;
+  height: 500px;
   margin: auto;
   .light-left{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     overflow: scroll;
     width: 50%;
   }
@@ -53,11 +58,50 @@
     display: flex;
     flex-direction: column;
     width: 50%;
-    h5{
-    text-align: left;
+    p {
+      text-align: left;
     }
   }
   .light-img{
-    max-height: 100%;
+    width: 100%;
+  }
+  .sizing {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 48px;
+    min-width: 48px;
+    margin: 2px;
+    border: 1px solid silver;
   }
 }
+.carousel__back-button {
+  clear: both;
+  position: relative;
+  top: 50%;
+  left: 0%;
+  z-index: 11;
+  height: 30px;
+  width: 30px;
+  border-radius: 10px;
+}
+.carousel__next-button {
+  float: right;
+  position: relative;
+  top: 50%;
+  right: 0%;
+  z-index: 11;
+  height: 30px;
+  width: 30px;
+  border-radius: 10px;
+}
+.car-nav {
+  width: 572px;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 50%;
+  padding: 10px;
+}
+
+.carousel__back-button:focus, .carousel__next-button:focus { outline: none;}

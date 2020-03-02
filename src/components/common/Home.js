@@ -1,6 +1,8 @@
 import React from 'react'
 var jsonData = require('../../../data/product.json')
 
+import NavDropdown from './NavDropdown'
+
 export default class Home extends React.Component {
   constructor() {
     super()
@@ -18,6 +20,10 @@ export default class Home extends React.Component {
   render() {
     if (!this.state.data) return null
     console.log('data: ',this.state.data)
-    return <h1>Test Header</h1>
+    return (
+      <div>
+        <NavDropdown />
+      </div>
+    )
   }
 }

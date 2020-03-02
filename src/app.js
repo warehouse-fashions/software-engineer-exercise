@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 import Home from './components/common/Home'
+import Nav from './components/common/Nav'
 
 import '../src/styles/main.scss'
 
@@ -10,7 +11,7 @@ import 'normalize.css'
 
 const App = () => (
   <BrowserRouter>
-    {/* navbar */}
+    <Nav />
 
     <Switch>
       <Route exact path='/' component={Home} />

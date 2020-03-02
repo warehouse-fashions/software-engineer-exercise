@@ -40,6 +40,8 @@ export default class Recommend extends React.Component {
     const lightbox = document.getElementsByClassName('void')[0]
     lightbox.style.display = 'flex'
     console.log(this.state)
+
+    document.getElementsByClassName('buttonFirst___2rhFr')[0].click()
   }
 
   hideLight() {
@@ -50,6 +52,7 @@ export default class Recommend extends React.Component {
       const lightbox = document.getElementsByClassName('void')[0]
       lightbox.style.display = 'none'
     }
+    
   }
 
   render() {

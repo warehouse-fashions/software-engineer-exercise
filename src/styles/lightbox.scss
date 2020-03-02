@@ -36,6 +36,8 @@
   height: 100vh;
 }
 .lightbox {
+  box-shadow: 3px 3px 9px silver;
+  border-radius: 2px;
   h5 {
     margin-top: 0px;
     margin-bottom: 4px;
@@ -45,13 +47,13 @@
   background: whitesmoke;
   z-index: 9;
   width: 1155px;
-  height: 500px;
+  height: fit-content;
   margin: auto;
   .light-left{
     display: flex;
     flex-direction: column;
     overflow: scroll;
-    width: 50%;
+    width: 45%;
   }
   .light-right{
     padding-left: 14px;
@@ -75,33 +77,34 @@
     border: 1px solid silver;
   }
 }
-.carousel__back-button {
-  clear: both;
-  position: relative;
-  top: 50%;
-  left: 0%;
-  z-index: 11;
-  height: 30px;
-  width: 30px;
-  border-radius: 10px;
-}
-.carousel__next-button {
-  float: right;
-  position: relative;
-  top: 50%;
-  right: 0%;
-  z-index: 11;
-  height: 30px;
-  width: 30px;
-  border-radius: 10px;
-}
 .car-nav {
-  width: 572px;
+  position: absolute;
+  top: 24%;
   display: flex;
   justify-content: space-between;
-  position: absolute;
-  top: 50%;
-  padding: 10px;
+  align-items: center;
+  margin: 10px;
+  width: 497.5px;
+  height: 50%;
+  .carousel__back-button {
+    z-index: 11;
+    background-color: rgba(0,0,0,0);
+    border: 0px;
+    img {
+      transform: rotate(180deg);
+    }
+  }
+  .carousel__next-button {
+    z-index: 11;
+    background-color: rgba(0,0,0,0);
+    border: 0px;
+  }
+.carousel__back-button:focus,
+.carousel__next-button:focus { outline: none;}
 }
 
-.carousel__back-button:focus, .carousel__next-button:focus { outline: none;}
+.buttonFirst___2rhFr {
+  display: none;
+}
+
+

@@ -4,7 +4,8 @@ import {
   Slider,
   Slide,
   ButtonBack,
-  ButtonNext
+  ButtonNext,
+  ButtonFirst
 } from 'pure-react-carousel'
 import 'pure-react-carousel/dist/react-carousel.es.css'
 
@@ -27,15 +28,12 @@ const Lightbox = ({ data }) => {
     <div className='void'>
       <div className='lightbox' name='lightbox'>
         <div className='light-left'>
+    
           <CarouselProvider
-            naturalSlideWidth={100}
-            naturalSlideHeight={100}
+            naturalSlideWidth={200}
+            naturalSlideHeight={200}
             totalSlides={imgArr.length}
           >
-            <div className='car-nav'>
-              <ButtonBack>&lt;</ButtonBack>
-              <ButtonNext>&gt;</ButtonNext>
-            </div>
             <Slider>
               {imgArr.map((elem, index) => (
                 <Slide index={index} key={index}>
@@ -43,7 +41,14 @@ const Lightbox = ({ data }) => {
                 </Slide>
               ))}
             </Slider>
+            <ButtonFirst />
+            <div className='car-nav'>
+              <ButtonBack><img className='car-icon' src='../assets/ico/car-nav.png' /></ButtonBack>
+              <ButtonNext><img className='car-icon' src='../assets/ico/car-nav.png' /></ButtonNext>
+            </div>
+            
           </CarouselProvider>
+          
         </div>
 
         <div className='light-right'>

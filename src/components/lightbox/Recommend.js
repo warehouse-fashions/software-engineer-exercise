@@ -37,49 +37,37 @@ export default class Recommend extends React.Component {
 
   showLight() {
     // set data for lightbox
-    const lightSel = this.state.products.data.filter(
-      product => product.name === event.target.name
-    )[0]
     const render = true
+    const lightSel = this.state.products.data.filter(
+      product => product.name === event.target.name)[0]
     this.setState({ lightSel, render })
-
-    console.log('updating lightbox...', lightSel)
     setTimeout(()=>{
       // show lightbox
       const lightbox = document.getElementsByClassName('void')[0]
       lightbox.style.display = 'flex'
-
       // reset carousel
       document.getElementsByClassName('buttonFirst___2rhFr')[0].click()
     },50)
-
-
-
+    console.log('updating lightbox...', lightSel)
   }
 
   hideLight() {
     // if either ESC or user clicked out of lightbox => hide lightbox
-    if (event.key === 'Escape') {
+    if (!this.state.render) {
+      return null
+    } else if (event.key === 'Escape' || event.toElement.className === 'void') {
       const lightbox = document.getElementsByClassName('void')[0]
       lightbox.style.display = 'none'
       const render = false
       this.setState({ data: '', render })
-    } else if (event.toElement.className === 'void') {
-      const lightbox = document.getElementsByClassName('void')[0]
-      lightbox.style.display = 'none'
-      this.setState({ data: '', render })
-      const render = false
-    }
+    } 
   }
 
   render() {
     console.log('lightbox = ',this.state.render)
     // as long as we have recommendations, render them
     if (!this.state.recommendations.hits) return null
-
-    console.log(
-      this.state.products.data.map(elem => elem.variation_attributes[0].values)
-    )
+    
     // filter recommendations to those which we have images for
     const hits = this.state.recommendations.hits.filter(product =>
       Object.keys(product).includes('image')

@@ -21,7 +21,7 @@ export default class LightboxClass extends React.Component {
       sizeArr: sel.variation_attributes ? sel.variation_attributes[1].values : [],
       price: sel ? Object.values(hits.filter((elem) => elem.product_name === sel.name))[0].price : []
     }
-    //binds
+    this.updateColor = this.updateColor.bind(this)
   }
   componentDidMount(){
     // update the title when you interact with lightbox
@@ -53,16 +53,22 @@ export default class LightboxClass extends React.Component {
     const picked = variant[0].image_groups.filter(elem => Object.values(elem).includes(color))[0].images
 
 
-    console.log('variant: ',variant)
-    console.log('picked : ',picked)
+    // console.log('variant: ',variant)
+    // console.log('picked : ',picked)
 
-    const imgArr = picked.map(elem => elem.link)
-    console.log(imgArr)
+    const imgArr = picked.map(elem => elem)
+    this.setState({ imgArr })
+    console.log('update image array:',imgArr)
   }
 
   render() {
-    console.log('props rendered:',this.props)
-    console.log('lightbox here: ',this.state)
+    console.log(
+      'lightbox props:','\n',
+      this.props,'\n','\n',
+      'lightbox loaded: ',
+      this.state
+    )
+
     return (
       <div className='void'>
         <div className='lightbox' name='lightbox'>

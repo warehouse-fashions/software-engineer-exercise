@@ -1,7 +1,8 @@
 import React from 'react'
 
 import ProductCard from './ProductCard'
-import Lightbox from './Lightbox'
+// import Lightbox from './Lightbox'
+import LightboxClass from './LightboxClass'
 
 var jsonProd = require('../../../data/product.json')
 var jsonRec = require('../../../data/recommendations.json')
@@ -10,9 +11,10 @@ export default class Recommend extends React.Component {
   constructor() {
     super()
     this.state = {
-      products: {}, 
+      render: false,
+      products: {},
       recommendations: {},
-      hit: '', //recommended items 
+      hit: '', //recommended items
       data: '', //all data
       lightSel: '' //lightbox data for selected item
     }
@@ -36,17 +38,23 @@ export default class Recommend extends React.Component {
   showLight() {
     // set data for lightbox
     const lightSel = this.state.products.data.filter(
-      product => product.name === event.target.name)[0]
-    this.setState({ lightSel })
+      product => product.name === event.target.name
+    )[0]
+    const render = true
+    this.setState({ lightSel, render })
 
-    console.log('updating lightbox...',lightSel)
+    console.log('updating lightbox...', lightSel)
+    setTimeout(()=>{
+      // show lightbox
+      const lightbox = document.getElementsByClassName('void')[0]
+      lightbox.style.display = 'flex'
 
-    // show lightbox
-    const lightbox = document.getElementsByClassName('void')[0]
-    lightbox.style.display = 'flex'
+      // reset carousel
+      document.getElementsByClassName('buttonFirst___2rhFr')[0].click()
+    },100)
 
-    // reset carousel
-    document.getElementsByClassName('buttonFirst___2rhFr')[0].click()
+
+
   }
 
   hideLight() {
@@ -66,10 +74,13 @@ export default class Recommend extends React.Component {
     // as long as we have recommendations, render them
     if (!this.state.recommendations.hits) return null
 
-    console.log(this.state.products.data.map(elem => elem.variation_attributes[0].values))
+    console.log(
+      this.state.products.data.map(elem => elem.variation_attributes[0].values)
+    )
     // filter recommendations to those which we have images for
     const hits = this.state.recommendations.hits.filter(product =>
-      Object.keys(product).includes('image'))
+      Object.keys(product).includes('image')
+    )
     // render
     return (
       <div className='recommend'>
@@ -78,11 +89,13 @@ export default class Recommend extends React.Component {
           {hits.map((elem, index) => (
             <ProductCard key={index} hits={elem} showLight={this.showLight} />
           ))}
-          <Lightbox
-            all={this.state.products}
-            hits={hits}
-            sel={this.state.lightSel}
-          />
+          {this.state.render ? (
+            <LightboxClass
+              all={this.state.products}
+              hits={hits}
+              sel={this.state.lightSel}
+            />
+          ) : null}
         </div>
       </div>
     )

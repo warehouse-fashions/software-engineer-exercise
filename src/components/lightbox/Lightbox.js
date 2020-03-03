@@ -18,10 +18,12 @@ function parseHTML(string) {
 }
 
 
+let imgArr = []
 
 const Lightbox = ({ all, hits, sel }) => {
+
+  imgArr = sel.image_groups ? sel.image_groups[0].images : []
   // grab sel of variable arrays
-  let imgArr = sel.image_groups ? sel.image_groups[0].images : []
   const colArr = sel.variation_attributes
     ? sel.variation_attributes[0].values
     : []
@@ -51,7 +53,8 @@ const Lightbox = ({ all, hits, sel }) => {
     console.log('variant: ',variant)
     console.log('picked : ',picked)
 
-    console.log(imgArr = picked.map(elem => elem.link))
+    imgArr = picked.map(elem => elem.link)
+    console.log(imgArr)
   }
 
   // render

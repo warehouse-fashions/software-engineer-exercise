@@ -25,7 +25,7 @@ No backend or express server is needed as JSON is loaded locally, simply run `$ 
 I've configured webpack to run dev-server on port `4000`. Please make sure your port is not in use before initialising, or feel free to re-configure to a prefered port.
 
 #### How should this website look?
-This website has passed tests on Google Chrome, Safari Web on Mac OS and Safari Mobile on iOS.
+This website has passed tests on Google Chrome and Safari on Mac OS (15.6" Macbook Pro) and Safari Mobile on iOS (iPhone 7 Plus).
 
 Example of Mobile (left) and Desktop views (right)
 
@@ -46,17 +46,17 @@ To exit the Lightbox, you can simply click away from it, or hit the Esc key. If 
 > If you're **emulating mobile view in dev-tools**, you wont be able to click exit from the Lightbox as the event listener is exclusively listening for a touch event during mobile view. You can still use the ESC key to exit the Lightbox during this scenario.
 
 ## Challenges
-I really enjoyed this code challenge, at first I thought the task to be simple, but once I dug through the JSON data and saw what I had to play with, I managed to get my teeth sunk into a lot of preening at details.
+I really enjoyed this code challenge, at first I thought the task to be simple, but once I dug through the JSON data and saw what I had to play with, I managed to get my teeth sunk into a lot of details.
 
 I noticed a few discrepencies between the two JSON data files (`price`), so had to reconcile this data to ensure data was always populating my template. 
 
-I also noticed that similar object values between the two JSON objects didn't hve respective paths/object keys (`product.name` vs `product_nam`e). It's details like this that kept me on my feet during the challenge.
+I also noticed that similar object values between the two JSON objects didn't have respective paths/object keys (i.e `product.name` vs `product_name`). Details like this kept me on my feet during the challenge.
 
-My biggest challenge was really focussing on the mobile optimisation. It can be a fiddly job, and can take a fair amount of time to really iron out details to suit every single screen-size.
+My biggest challenge was on the mobile optimisation. It can be a fiddly job and can take a fair amount of time to really iron out details to suit every single screen-size.
 
 
 ## Future Improvements
-I would really have liked to spend more time on optimising this website for multiple displays. As much as everything currently adapts to web & mobile view, I didnt get a mobile-landscape/tablet media query in.
+I would have liked to spend more time on optimising this website for multiple displays. As much as everything currently adapts to web & mobile view, I didnt get a mobile-landscape/tablet media query in, nor any testing for multiple display sizes.
 
 Also, I've worked hard to deliver functionality and stability in my code, but I could spend a lot more time refactoring my functions given more time.
 

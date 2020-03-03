@@ -9,7 +9,11 @@ As this project did not require any backend, no other services are running.
 
 Most media is local, however some assets (brand logo) are remote, so for best results please maintain an internet connection while testing.
 
-I've added a few icons and UI on the main site, without functionality, but instead to demonstrate an example of Desktop and Mobile views and how UI may change. I kept functionality out as this was not part of the breif and I was on a time limit.
+I've added a few icons and UI on the main site, without functionality, but instead to demonstrate an understanding of Desktop and Mobile views and how UI may change. I kept functionality out as this was not part of the breif and I was on a time limit.
+
+- [x] Re-useable code
+- [x] Responsive design
+- [x] Everything works
 
 
 ## Instructions:
@@ -38,6 +42,8 @@ The Lightbox is another re-usable React component, each component comes loaded w
 Every colour variety in the Lightbox product view, when clicked, will update the carousel with the new data for the respective color, maintaining your position in the carousel, so you can compare the differences between each product color variety more accurately.
 
 To exit the Lightbox, you can simply click away from it, or hit the Esc key. If you're in mobile view, there is an exit cross in the top right corner.
+
+> If you're **emulating mobile view in dev-tools**, you wont be able to click exit from the Lightbox as the event listener is exclusively listening for a touch event during mobile view. You can still use the ESC key to exit the Lightbox during this scenario.
 
 ## Challenges
 I really enjoyed this code challenge, at first I thought the task to be simple, but once I dug through the JSON data and saw what I had to play with, I managed to get my teeth sunk into a lot of preening at details.

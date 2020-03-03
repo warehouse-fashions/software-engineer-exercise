@@ -24,7 +24,7 @@ export default class Nav extends React.Component {
       dropdown.style.display = 'none'
       dropdown.style.minHeight = '0px'
       dropdown.innerHTML = ''
-    }, 300)
+    }, 500)
   }
 
   //function

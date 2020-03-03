@@ -1,3 +1,4 @@
+// ---- WE RECOMMEND OBJECT
 .recommend {
   display: flex;
   flex-direction: column;
@@ -25,6 +26,8 @@
   }
 }
 
+
+// ---- LIGHTBOX
 .void{
   display: none;
   position: absolute;
@@ -77,6 +80,17 @@
     border: 1px solid silver;
   }
 }
+.col-box {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 48px;
+  min-width: 48px;
+  margin: 2px;
+  border: 1px solid silver;
+}
+
+// ---- LIGHTBOX CAROUSEL
 .car-nav {
   position: absolute;
   top: 24%;

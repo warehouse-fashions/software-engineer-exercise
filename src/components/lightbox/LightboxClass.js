@@ -91,7 +91,7 @@ export default class LightboxClass extends React.Component {
     )
     
     return (
-      <div className='void'>
+      <div className='void animated fadeIn fast'>
         <div className='lightbox' name='lightbox'>
 
           {/* left half */}

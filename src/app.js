@@ -8,6 +8,7 @@ import Nav from './components/common/Nav'
 import '../src/styles/main.scss'
 
 import 'normalize.css'
+import 'animate.css'
 
 const App = () => (
   <BrowserRouter>

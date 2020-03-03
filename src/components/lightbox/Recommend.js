@@ -61,7 +61,7 @@ export default class Recommend extends React.Component {
     if (!this.state.render) {
       return null
     } else if (event.key === 'Escape' ||
-    event.toElement.className === 'void') {
+    event.toElement.className.includes('void')) {
       const lightbox = document.getElementsByClassName('void')[0]
       lightbox.style.display = 'none'
       const render = false

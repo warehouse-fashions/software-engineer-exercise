@@ -1,13 +1,37 @@
 # Warehouse Software Engineer Exercise
 
-In this exercise we would like you to build a web component similar to this [screenshot](recommendations-screenshot.png) using the recommendations [JSON](data/recommendations.json) provided. The component you build should display images, prices be able to link to a product modal/lightbox.
+## Breifing:
+This website is built on the current version of React (16.7) and is purely a HTML(JSX), CSS and JavaScript website.
 
-The product modal/lightbox should display information on the product clicked on similar to this [screenshot](product-modal-screenshot.png) making sure to include an image carousel, product name, price, colour swatch and size variations. All product information can be found in the following products [JSON](data/product.json) provided. Creativity is accepted but do not alter the JSONs provided.
+Webpack is used to provide a dev-server environment.
 
-### Requirements
-* Responsive
-* Reusable code
+As this project did not require any backend, no other services are running.
 
-Please fork this repository and commit your changes for review.
+Most media is local, however some assets (brand logo) are remote, so for best results please maintain an internet connection while testing.
 
-Amend this Readme in your forked repo and use your commits to outline the component you have created and the decisions that you have made, including any information required for how to run your component. When complete please raise a Pull Request back into master branch for review.
+## Instructions:
+Having downloaded the repository please be sure to run 
+`npm install` to install all packages from the package.json file.
+
+No backend or express server is needed as JSON is loaded locally, simply run `npm run front` to start the webpack dev server. 
+
+I've configured webpack to run dev-server on port `4000`. Please make sure your port is not in use before initialising, or feel free to re-configure to a prefered port.
+
+#### How should this website look?
+This website has passed tests on Google Chrome, Safari Web on Mac OS and Safari Mobile on iOS.
+
+Example of Mobile (left) and Desktop views (right)
+
+![index](warehouse1.png)
+![show](warehouse2.png)
+
+## How to use this website:
+The recommended products are mapped out in a horizontal scrolling (vertical for mobile) container.
+
+Each product card is within a re-usable react component. Simply click on an image to load the product Lightbox for more information about the product.
+
+The Lightbox is another re-usable React component, each component comes loaded with a pure-react carousel, as well as a template to display data about each product.
+
+Every colour variety in the Lightbox product view, when clicked, will update the carousel with the new data for the respective color, maintaining your position in the carousel, so you can compare the differences between each product color variety more accurately.
+
+To exit the Lightbox, you can simply click away from it, or hit the Esc key. If you're in mobile view, there is an exit cross in the top right corner.

@@ -52,7 +52,7 @@ export default class Recommend extends React.Component {
       const lightbox = document.getElementsByClassName('void')[0]
       lightbox.style.display = 'flex'
       document.getElementsByClassName('buttonFirst___2rhFr')[0].click()
-    },50)
+    },10)
     console.log('updating lightbox...', lightSel)
   }
 

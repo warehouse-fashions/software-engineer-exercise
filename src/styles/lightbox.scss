@@ -103,7 +103,8 @@ div.close {
   justify-content: space-between;
   align-items: center;
   margin: 10px;
-  width: 497.5px;
+  width: 42%;
+  max-width: 497.5px;
   height: 50%;
   .carousel__back-button {
     z-index: 11;
@@ -181,12 +182,13 @@ div.close {
   }
 .car-nav {
   position: absolute;
-  top: 10%;
+  top: 15%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 10px;
-  width: 80%;
+  width: 82%;
+  max-width: 680px;
   // transform: rotate(90deg);
   height: 30%;
  

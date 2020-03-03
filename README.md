@@ -1,13 +1,63 @@
 # Warehouse Software Engineer Exercise
 
-In this exercise we would like you to build a web component similar to this [screenshot](recommendations-screenshot.png) using the recommendations [JSON](data/recommendations.json) provided. The component you build should display images, prices be able to link to a product modal/lightbox.
+## Breifing:
+This website is built on the current version of React (16.7) and is purely a HTML(JSX), CSS(SASS) and JavaScript website.
 
-The product modal/lightbox should display information on the product clicked on similar to this [screenshot](product-modal-screenshot.png) making sure to include an image carousel, product name, price, colour swatch and size variations. All product information can be found in the following products [JSON](data/product.json) provided. Creativity is accepted but do not alter the JSONs provided.
+Webpack is used to provide a dev-server environment.
 
-### Requirements
-* Responsive
-* Reusable code
+As this project did not require any backend, no other services are running.
 
-Please fork this repository and commit your changes for review.
+Most media is local, however some assets (brand logo) are remote, so for best results please maintain an internet connection while testing.
 
-Amend this Readme in your forked repo and use your commits to outline the component you have created and the decisions that you have made, including any information required for how to run your component. When complete please raise a Pull Request back into master branch for review.
+I've added a few icons and UI on the main site, without functionality, but instead to demonstrate an understanding of Desktop and Mobile views and how UI may change. I kept functionality out as this was not part of the breif and I was on a time limit.
+
+- [x] Re-useable code
+- [x] Responsive design
+- [x] Everything works
+
+
+## Instructions:
+Having downloaded the repository please be sure to run 
+`$ npm install` to install all packages from the package.json file.
+
+No backend or express server is needed as JSON is loaded locally, simply run `$ npm run front` to start the webpack dev server once all node modules have completed installation.
+
+I've configured webpack to run dev-server on port `4000`. Please make sure your port is not in use before initialising, or feel free to re-configure to a prefered port.
+
+#### How should this website look?
+This website has passed tests on Google Chrome and Safari on Mac OS (15.6" Macbook Pro) and Safari Mobile on iOS (iPhone 7 Plus).
+
+Example of Mobile (left) and Desktop views (right)
+
+![index](warehouse1.png)
+![show](warehouse2.png)
+
+## How to use this website:
+The recommended products are mapped out in a horizontal scrolling (vertical for mobile) container.
+
+Each product card is within a re-usable react component. Simply click on an image to load the product Lightbox for more information about the product.
+
+The Lightbox is another re-usable React component, each component comes loaded with a pure react carousel, as well as a template to display data about each product.
+
+Every colour variety in the Lightbox product view, when clicked, will update the carousel with the new data for the respective color, maintaining your position in the carousel, so you can compare the differences between each product color variety more accurately.
+
+To exit the Lightbox, you can simply click away from it, or hit the Esc key. If you're in mobile view, there is an exit cross in the top right corner.
+
+> If you're **emulating mobile view in dev-tools**, you wont be able to click exit from the Lightbox as the event listener is exclusively listening for a touch event during mobile view. You can still use the ESC key to exit the Lightbox during this scenario.
+
+## Challenges
+I really enjoyed this code challenge, at first I thought the task to be simple, but once I dug through the JSON data and saw what I had to play with, I managed to get my teeth sunk into a lot of details.
+
+I noticed a few discrepencies between the two JSON data files (`price`), so had to reconcile this data to ensure data was always populating my template. 
+
+I also noticed that similar object values between the two JSON objects didn't have respective paths/object keys (i.e `product.name` vs `product_name`). Details like this kept me on my feet during the challenge.
+
+My biggest challenge was on the mobile optimisation. It can be a fiddly job and can take a fair amount of time to really iron out details to suit every single screen-size.
+
+
+## Future Improvements
+I would have liked to spend more time on optimising this website for multiple displays. As much as everything currently adapts to web & mobile view, I didnt get a mobile-landscape/tablet media query in, nor any testing for multiple display sizes.
+
+Also, I've worked hard to deliver functionality and stability in my code, but I could spend a lot more time refactoring my functions given more time.
+
+I have really enjoyed building this site, given more time I would love to implement the search feature so I can re-use my Lightbox and Card components again and see if there's any more functionality I could add to the Lightbox - perhaps ablity to scroll through the next item, or even a compare product view.

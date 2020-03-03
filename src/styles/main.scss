@@ -1,0 +1,25 @@
+@import './nav.scss';
+@import './lightbox.scss';
+
+@import url('https://fonts.googleapis.com/css?family=Hind&display=swap');
+
+h2, h3 {
+  font-family: Helvetica, sans-serif;
+  text-transform: uppercase;
+}
+h4,span,p {
+  font-family: 'Hind', ;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: medium;
+  text-align: center;
+}
+
+h5 {
+  font-family: 'Hind', ;
+  font-size: larger;
+  text-align: center;
+}
+.hidden {
+  display: none;
+}

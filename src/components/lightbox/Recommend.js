@@ -95,10 +95,12 @@ export default class Recommend extends React.Component {
     return (
       <div className='recommend'>
         <h3>We Recommend</h3>
-        <div className='grid'>
+        <div className={this.state.render ? 'hidden' : 'grid'}>
           {hits.map((elem, index) => (
             <ProductCard key={index} hits={elem} showLight={this.showLight} />
           ))}
+        </div>
+        <div>
           {this.state.render ? (
             <LightboxClass
               all={this.state.products}

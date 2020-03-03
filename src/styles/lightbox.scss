@@ -133,13 +133,19 @@ div.close {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
+    top: 200px;
+    h3 {
+      margin: auto;
+      height: fit-content;
+    }
     .grid {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       position: absolute;
-      top: 25%;
+      top: 15vh;
       // overflow: scroll;
       width: 350px;
       .product-card {
@@ -159,7 +165,7 @@ div.close {
   }
 
 
-  // ---- LIGHTBOX CAROUSEL
+  // ---- LIGHTBOX CAROUSEL @media
 span#colname{
     display: none;
   }
@@ -201,14 +207,14 @@ div.close {
 
 }
 
-// ---- LIGHTBOX
+// ---- LIGHTBOX @media
 .void{
   display: none;
   position: fixed;
   top: 0px;
   left: 0px;
   background: rgba(0,0,0,0.2);
-  z-index: 100;
+  z-index: 990;
   width: 100vw;
   height: 100vh;
 }
@@ -220,12 +226,13 @@ div.close {
     margin-bottom: 4px;
     text-align: left;
   }
+  // position: fixed;
   display: flex;
   flex-direction: column;
   background: rgba(245, 245, 245,1);
-  z-index: 9;
+  z-index: 999;
   width: 90vw;
-  height: 88vh;
+  height: 90vh;
   margin: 10px auto;
   .light-left{
     max-height: 45%;

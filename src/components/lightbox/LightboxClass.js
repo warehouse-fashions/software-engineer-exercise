@@ -15,7 +15,7 @@ export default class LightboxClass extends React.Component {
     this.state = {
       products: all,
       hits: hits,
-      selected: {},
+      selected: sel,
       imgArr: sel.image_groups ? sel.image_groups[0].images : [],
       colArr: sel.variation_attributes ? sel.variation_attributes[0].values : [],
       sizeArr: sel.variation_attributes ? sel.variation_attributes[1].values : [],
@@ -27,17 +27,11 @@ export default class LightboxClass extends React.Component {
     // update the title when you interact with lightbox
     const title = `${this.state.selected ? this.state.selected.name : 'Home'} | Warehouse`
     document.getElementsByTagName('title')[0].innerHTML = title
-
-    // const imgArr = sel.image_groups ? sel.image_groups[0].images : []
-    // const colArr = sel.variation_attributes ? sel.variation_attributes[0].values : []
-    // const sizeArr =  sel.variation_attributes ? sel.variation_attributes[1].values : []
-    // const price = sel ? Object.values(hits.filter((elem) => elem.product_name === sel.name))[0].price : []
-    const selected = this.props.sel
-    this.setState({ selected })
-
   }
 
-
+  componentWillUnmount(){
+    document.getElementsByTagName('title')[0].innerHTML = 'Home | Warehouse'
+  }
 
   parseHTML(string) {
     return String(string)
@@ -100,7 +94,7 @@ export default class LightboxClass extends React.Component {
 
           {/* right half */}
           <div className='light-right'>
-            <h3>{'test'}</h3>
+            <h3>{this.state.selected.name}</h3>
             <h5>£ {Number(`${this.state.price}`).toFixed(2)}</h5>
 
             {/* color variants */}
@@ -109,7 +103,7 @@ export default class LightboxClass extends React.Component {
                 <span className='light-color' key={index}>
                   <div
                     onClick={() => {
-                      this.updateColor(this.state.sel, event.target.id)
+                      this.updateColor(this.state.selected, event.target.id)
                     }}
                     id={elem.value}
                     className='col-box'
@@ -119,7 +113,7 @@ export default class LightboxClass extends React.Component {
                         .join('')
                     }}
                   ></div>
-                  <span> {elem.name} </span>
+                  {/* <span> {elem.name} </span> */}
                 </span>
               ))}
             </div>
@@ -135,8 +129,8 @@ export default class LightboxClass extends React.Component {
             </div>
 
             {/* additional info */}
-            {/* <p className='product'>{this.parseHTML(this.state.selected.c_additionalDescription)}</p>
-            <p>{this.parseHTML(this.state.selected.c_additionalInformation)}</p> */}
+            <p className='product'>{this.parseHTML(this.state.selected.c_additionalDescription)}</p>
+            <p>{this.parseHTML(this.state.selected.c_additionalInformation)}</p>
           </div>
           {/* end of lightbox */}
         </div>

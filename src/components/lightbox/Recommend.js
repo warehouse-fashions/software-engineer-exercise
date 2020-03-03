@@ -51,7 +51,7 @@ export default class Recommend extends React.Component {
 
       // reset carousel
       document.getElementsByClassName('buttonFirst___2rhFr')[0].click()
-    },100)
+    },50)
 
 
 
@@ -62,15 +62,18 @@ export default class Recommend extends React.Component {
     if (event.key === 'Escape') {
       const lightbox = document.getElementsByClassName('void')[0]
       lightbox.style.display = 'none'
-      this.setState({ data: '' })
+      const render = false
+      this.setState({ data: '', render })
     } else if (event.toElement.className === 'void') {
       const lightbox = document.getElementsByClassName('void')[0]
       lightbox.style.display = 'none'
-      this.setState({ data: '' })
+      this.setState({ data: '', render })
+      const render = false
     }
   }
 
   render() {
+    console.log('lightbox = ',this.state.render)
     // as long as we have recommendations, render them
     if (!this.state.recommendations.hits) return null
 

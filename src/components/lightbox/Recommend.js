@@ -12,8 +12,8 @@ export default class Recommend extends React.Component {
     super()
     this.state = {
       render: false,
-      products: {},
-      recommendations: {},
+      products: jsonProd,
+      recommendations: jsonRec,
       hit: '', //recommended items
       data: '', //all data
       lightSel: '' //lightbox data for selected item
@@ -22,30 +22,32 @@ export default class Recommend extends React.Component {
     this.hideLight = this.hideLight.bind(this)
   }
   componentDidMount() {
-    this.setState({
-      products: jsonProd,
-      recommendations: jsonRec
-    })
     // ESC and Click listeners for lightbox
     document.addEventListener('keydown', this.hideLight, false)
     document.addEventListener('click', this.hideLight, false)
   }
-  // Responsible disposal of event listers
+
   componentWillUnmount() {
+    // Good practice, but uness for this exercise.
     document.removeEventListener('keydown', this.hideLight, false)
+    document.removeEventListener('click', this.hideLight, false)
   }
 
   showLight() {
     // set data for lightbox
+    // toggle render
     const render = true
     const lightSel = this.state.products.data.filter(
       product => product.name === event.target.name)[0]
     this.setState({ lightSel, render })
+    // show lightbox:
+    // we need to delay showing and resetting lightbox
+    // to let the re-render kick in and display elements
+    // this is also important for the above props to 
+    // register on child components first mount
     setTimeout(()=>{
-      // show lightbox
       const lightbox = document.getElementsByClassName('void')[0]
       lightbox.style.display = 'flex'
-      // reset carousel
       document.getElementsByClassName('buttonFirst___2rhFr')[0].click()
     },50)
     console.log('updating lightbox...', lightSel)
@@ -65,14 +67,14 @@ export default class Recommend extends React.Component {
 
   render() {
     console.log('lightbox = ',this.state.render)
+
     // as long as we have recommendations, render them
     if (!this.state.recommendations.hits) return null
     
     // filter recommendations to those which we have images for
     const hits = this.state.recommendations.hits.filter(product =>
-      Object.keys(product).includes('image')
-    )
-    // render
+      Object.keys(product).includes('image'))
+
     return (
       <div className='recommend'>
         <h3>We Recommend</h3>

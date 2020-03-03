@@ -33,6 +33,14 @@ export default class Nav extends React.Component {
     return (
       <nav>
         <div className='nav-icons'>
+          {/* mobile */}
+          <a href='#'>
+            <img className='mobile-burger icons' src='../../assets/ico/list.png'></img>
+          </a>
+          <a href='#'>
+            <img className='mobile-search icons' src='../../assets/ico/search.png'></img>
+          </a>
+          {/* desktop */}
           <a href='#'>
             <img className='icons' src='../../assets/ico/basket.png'></img>
           </a>
@@ -44,44 +52,43 @@ export default class Nav extends React.Component {
           </a>
         </div>
         <div className='nav'>
-          <img
-            className='logo'
-            src='https://www.warehouse.co.uk/on/demandware.static/Sites-Warehouse-UK-Site/-/default/dweefb68b5/images/logo.svg'
-          />
-          <Link
-            to=''
-            onMouseOver={this.showDropDown}
-            onMouseLeave={this.hideDropDown}
-            name='New In'
-          >
-            New In
-          </Link>
-          <Link
-            to=''
-            onMouseOver={this.showDropDown}
-            onMouseLeave={this.hideDropDown}
-            name='Clothing'
-          >
-            Clothing
-          </Link>
-          <Link
-            to=''
-            onMouseOver={this.showDropDown}
-            onMouseLeave={this.hideDropDown}
-            name='Shoes and Accessories'
-          >
-            Shoes and Accessories
-          </Link>
-          <Link
-            to=''
-            onMouseOver={this.showDropDown}
-            onMouseLeave={this.hideDropDown}
-            name='Sales and Offers'
-          >
-            Sale and Offers
-          </Link>
+          <div className='logo' />
+          <div className='nav-links'>
+            <Link
+              to=''
+              onMouseOver={this.showDropDown}
+              onMouseLeave={this.hideDropDown}
+              name='New In'
+            >
+              New In
+            </Link>
+            <Link
+              to=''
+              onMouseOver={this.showDropDown}
+              onMouseLeave={this.hideDropDown}
+              name='Clothing'
+            >
+              Clothing
+            </Link>
+            <Link
+              to=''
+              onMouseOver={this.showDropDown}
+              onMouseLeave={this.hideDropDown}
+              name='Shoes and Accessories'
+            >
+              Shoes and Accessories
+            </Link>
+            <Link
+              to=''
+              onMouseOver={this.showDropDown}
+              onMouseLeave={this.hideDropDown}
+              name='Sales and Offers'
+            >
+              Sale and Offers
+            </Link>
+          </div>
           <div className='nav-search'>
-            <input type='text' placeholder='Search' />
+            <input className='nav-search' type='text' placeholder='Search' />
           </div>
         </div>
       </nav>

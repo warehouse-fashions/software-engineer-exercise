@@ -3,6 +3,8 @@ nav {
   text-transform: uppercase;
   font-weight: 800;
   width: 100vw;
+  background-color: white;
+  z-index: 99;
   .nav-icons {
     display: flex;
     flex-wrap: nowrap;
@@ -20,11 +22,7 @@ nav {
     align-items: center;
     border-top: 1px solid rgb(220,220,220);
     border-bottom: 1px solid  rgb(220,220,220);
-    .logo{
-      display: flex;
-      width: 278px;
-      padding: 8px;
-    }
+    height: 90px;
     a {
       margin: 10px;
       text-decoration: none;
@@ -41,6 +39,23 @@ nav {
     margin-right: 8px;
     margin-left: auto;
   }
+
+  .mobile-search {
+    visibility: hidden;
+  }
+  .mobile-burger {
+    visibility: hidden;
+  }
+
+  div.logo {
+    background-image: url('https://www.warehouse.co.uk/on/demandware.static/Sites-Warehouse-UK-Site/-/default/dweefb68b5/images/logo.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-width: 270px;
+    height: 90px;
+    margin: 0 10px;
+  }
 }
 
 // nav dropdown after hovering
@@ -56,6 +71,37 @@ nav {
   background-color: whitesmoke;
 }
 
+
+@media only screen and (max-width: 800px) {
+  h5 {
+    margin-top: 1px;
+  }
+  h4 {
+    margin-bottom: 4px;
+  }
+  nav{
+    position: fixed;
+    div.logo { 
+      background-image: url('https://www.warehouse.co.uk/on/demandware.static/Sites-Warehouse-UK-Site/-/default/dw4a46955d/images/mobile_logo.svg');
+      width: 90%;
+      margin: 0 auto;
+    }
+  }
+  img.mobile-search {
+    visibility: visible;
+  }
+  img.mobile-burger {
+    position: fixed;
+    left: 5px;
+    visibility: visible;
+  }
+  div.nav-links{
+    display: none;
+  }
+  div.nav-search{
+    display: none;
+  }
+}
 
 
 // mobile https://www.warehouse.co.uk/on/demandware.static/Sites-Warehouse-UK-Site/-/default/dw4a46955d/images/mobile_logo.svg

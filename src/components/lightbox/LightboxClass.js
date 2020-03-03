@@ -10,7 +10,7 @@ import {
 import 'pure-react-carousel/dist/react-carousel.es.css'
 
 export default class LightboxClass extends React.Component {
-  constructor({ all, hits, sel }) {
+  constructor({ all, hits, sel, close }) {
     super()
     this.state = {
       products: all,
@@ -64,6 +64,7 @@ export default class LightboxClass extends React.Component {
     `)
     return output
   }
+ 
 
   updateColor(sel, color) {
     // find all product variants which is this product
@@ -88,11 +89,14 @@ export default class LightboxClass extends React.Component {
       'lightbox state:',
       this.state
     )
+    
     return (
       <div className='void'>
         <div className='lightbox' name='lightbox'>
 
           {/* left half */}
+          <div className='close'> <img src='../../assets/ico/close.png' className='close'/> </div>
+
           <div className='light-left'>
             <CarouselProvider
               orientation={window.innerWidth < 500 ? 'vertical' : 'horizontal'}

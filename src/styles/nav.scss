@@ -41,10 +41,10 @@ nav {
   }
 
   .mobile-search {
-    visibility: hidden;
+    display: none;
   }
   .mobile-burger {
-    visibility: hidden;
+    display: none;
   }
 
   div.logo {
@@ -88,12 +88,12 @@ nav {
     }
   }
   img.mobile-search {
-    visibility: visible;
+    display: inline;
   }
   img.mobile-burger {
     position: fixed;
     left: 5px;
-    visibility: visible;
+    display: inline;
   }
   div.nav-links{
     display: none;
@@ -101,7 +101,35 @@ nav {
   div.nav-search{
     display: none;
   }
+
+  .nav-dropdown {
+    padding-left: 8px;
+    display: none;
+    position: fixed;
+    top: 53px;
+    z-index: 100;
+    width: 100vw;
+    min-height: 0px;
+    transition: linear;
+    transition-duration: 2s;
+    background-color: whitesmoke;
+    ul {
+      list-style: none;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    li {
+      margin: 10px 0;
+      font-size: large;
+      font-weight: bold;
+    }
+    li:hover{
+      color: plum;
+      cursor: pointer;
+    }
+  }
+
 }
+
 
 
 // mobile https://www.warehouse.co.uk/on/demandware.static/Sites-Warehouse-UK-Site/-/default/dw4a46955d/images/mobile_logo.svg

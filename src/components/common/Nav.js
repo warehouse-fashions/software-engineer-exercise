@@ -5,20 +5,32 @@ export default class Nav extends React.Component {
   constructor() {
     super()
     this.state = {
-      hover: false
+      hover: false,
+      burger: false
     }
     this.showDropDown = this.showDropDown.bind(this)
     this.hideDropDown = this.hideDropDown.bind(this)
   }
   showDropDown() {
-    this.setState({ hover: true })
+    this.setState({ hover: true, burger: true })
     const dropdown = document.getElementById('nav-dropdown')
     dropdown.style.display = 'flex'
     dropdown.style.minHeight = '300px'
-    dropdown.innerHTML = `<h2>${event.target.name}</h2>`
+    dropdown.innerHTML =
+      window.innerWidth < 800 ? (
+        `<ul>
+          <li>NEW IN</li>
+          <li>CLOTHING</li>
+          <li>SHOES AND ACCESSORIES </li>
+          <li>SALE AND OFFERS</li>
+        </ul>`
+      ) : (
+        `<h2>${event.target.name}</h2>`
+      )
   }
+
   hideDropDown() {
-    this.setState({ hover: false })
+    this.setState({ hover: false, burger: false })
     setTimeout(() => {
       const dropdown = document.getElementById('nav-dropdown')
       dropdown.style.display = 'none'
@@ -34,7 +46,7 @@ export default class Nav extends React.Component {
       <nav>
         <div className='nav-icons'>
           {/* mobile */}
-          <a href='#'>
+          <a href='#' onClick={this.state.burger ? this.hideDropDown : this.showDropDown}>
             <img className='mobile-burger icons' src='../../assets/ico/list.png'></img>
           </a>
           <a href='#'>

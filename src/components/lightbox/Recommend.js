@@ -20,17 +20,20 @@ export default class Recommend extends React.Component {
     }
     this.showLight = this.showLight.bind(this)
     this.hideLight = this.hideLight.bind(this)
+    this.hideMobile = this.hideMobile.bind(this)
   }
   componentDidMount() {
     // ESC and Click listeners for lightbox
     document.addEventListener('keydown', this.hideLight, false)
     document.addEventListener('click', this.hideLight, false)
+    document.addEventListener('touchstart', this.hideMobile, false)
   }
 
   componentWillUnmount() {
     // Good practice, but uness for this exercise.
     document.removeEventListener('keydown', this.hideLight, false)
     document.removeEventListener('click', this.hideLight, false)
+    document.removeEventListener('touchstart', this.hideMobile, false)
   }
 
   showLight() {
@@ -57,12 +60,26 @@ export default class Recommend extends React.Component {
     // if either ESC or user clicked out of lightbox => hide lightbox
     if (!this.state.render) {
       return null
-    } else if (event.key === 'Escape' || event.toElement.className === 'void') {
+    } else if (event.key === 'Escape' ||
+    event.toElement.className === 'void') {
       const lightbox = document.getElementsByClassName('void')[0]
       lightbox.style.display = 'none'
       const render = false
       this.setState({ data: '', render })
     } 
+    console.log(event)
+  }
+
+  hideMobile() {
+    if (!this.state.render) {
+      return null
+    }
+    if (event.srcElement.className === 'close'){
+      const lightbox = document.getElementsByClassName('void')[0]
+      lightbox.style.display = 'none'
+      const render = false
+      this.setState({ data: '', render })
+    }
   }
 
   render() {

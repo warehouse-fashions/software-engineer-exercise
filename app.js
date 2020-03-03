@@ -6,8 +6,8 @@ const renderHit = hit => {
 
   let html = '<div class="rec__item">';
   html += `<img class="item__photo" src="${hit.image.link}" alt="${hit.image.alt}"></img>`;
-  html += `<h2>${hit.product_name}</h2>`;
-  html += `<p>£${hit.price}.00</p>`
+  html += `<h2 class="product__name">${hit.product_name}</h2>`;
+  html += `<p class="price">£${hit.price}.00</p>`
   html += "</div>";
   return html;
 };

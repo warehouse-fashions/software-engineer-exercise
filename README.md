@@ -8,6 +8,17 @@ The product modal/lightbox should display information on the product clicked on 
 * Responsive
 * Reusable code
 
-Please fork this repository and commit your changes for review.
 
-Amend this Readme in your forked repo and use your commits to outline the component you have created and the decisions that you have made, including any information required for how to run your component. When complete please raise a Pull Request back into master branch for review.
+# To Run
+
+ #### To serve please first run npm install in the terminal. 
+ #### Then run "serve" in the terminal.
+ #### Then go to http://localhost:5000 
+
+## Issues 
+* Not sure how to link the data from two different. 
+* Spent roughly 4 hours to get to this point.
+
+## Next Steps
+* Next would create an innerHTML on click to show product-modal.
+* Would use @mediaquery for mobile and different screen sizes.

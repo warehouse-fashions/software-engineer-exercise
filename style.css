@@ -1,0 +1,42 @@
+.item__photo {
+    height: 100%;
+    width: 100%;
+}
+
+/* .hidden {
+    visibility: hidden;
+} */
+
+.rec {
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+    /* height: 10%;
+    overflow: hidden; */
+}
+
+.rec__item {
+    width: 25%;
+    height: 100%;
+}
+
+.product__name {
+    text-align: center;
+    font-size: 15px;
+    font-family: sans-serif;
+    margin-bottom: 0;
+}
+
+.price {
+    text-align: center;
+    font-size: 15px;
+    font-family: sans-serif;
+    margin-top: 10px;
+}
+
+.app-title {
+    text-align: center;
+    padding: 2rem;
+    font-family: sans-serif;
+    font-size: 20px;
+}
